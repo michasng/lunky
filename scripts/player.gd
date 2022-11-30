@@ -32,6 +32,8 @@ var state_names = {
 
 var current_state: State = State.DOOR
 var previous_state: State = State.DOOR
+func _ready():
+	anim_tree.travel('enter')
 
 func _physics_process(delta: float):
 	# first transition, then handle physics, for responsiveness
@@ -44,7 +46,8 @@ func _physics_process(delta: float):
 func get_transition():
 	match current_state:
 		State.DOOR:
-			if anim_tree.get_current_node() != 'enter' and anim_tree.get_current_node() != 'leave':
+			var anim_node = str(anim_tree.get_current_node())
+			if not anim_node in ['', 'enter', 'leave']:
 				return State.GROUND
 		State.GROUND:
 			if Input.is_action_just_pressed('jump'):
@@ -68,7 +71,7 @@ func get_transition():
 				return State.JUMP
 	return current_state
 
-func _exit_state(_previous_state: State, _next_state: State, delta: float):
+func _exit_state(_previous_state: State, _next_state: State, _delta: float):
 	pass
 
 func _enter_state(next_state: State, _previous_state: State, delta: float):
@@ -95,7 +98,7 @@ func handle_physics(delta: float):
 
 	velocity.x = move_toward(velocity.x, 0, friction)
 	if direction:
-		var factor = 1 if Input.is_action_pressed("sprint") else sprint_factor
+		var factor = 1.0 if Input.is_action_pressed("sprint") else sprint_factor
 		velocity.x = move_toward(
 			velocity.x,
 			direction * max_speed * factor,
@@ -118,7 +121,7 @@ func handle_physics(delta: float):
 
 
 func set_state(next_state: State, delta: float):
-	# print(state_names[next_state])
+	print(state_names[next_state])
 	previous_state = current_state
 	current_state = next_state
 	_exit_state(previous_state, next_state, delta)
