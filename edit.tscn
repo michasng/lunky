@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6gbj6kn4po4"]
+
+[ext_resource type="Script" path="res://scripts/level_edit.gd" id="1_0n1q8"]
+[ext_resource type="TileSet" uid="uid://cf04dho0rjbd" path="res://tilesets/editor_tileset.tres" id="1_bkohj"]
+[ext_resource type="Texture2D" uid="uid://g28ymffpphjb" path="res://tilesets/editor_tiles.png" id="3_ngttb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1n44"]
+atlas = ExtResource("3_ngttb")
+region = Rect2(0, 0, 128, 128)
+
+[node name="Edit" type="Node2D"]
+
+[node name="LevelEdit" type="TileMap" parent="."]
+tile_set = ExtResource("1_bkohj")
+cell_quadrant_size = 128
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 196616, 1, 0, 131080, 1, 0, 65544, 1, 0, 8, 1, 0, 7, 1, 0, 6, 1, 0, 5, 1, 0, 4, 1, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, 196610, 589825, 11)
+script = ExtResource("1_0n1q8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D"]
+offset_left = 438.0
+offset_top = -314.0
+offset_right = 515.0
+offset_bottom = -239.0
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/VBoxContainer"]
+offset_right = 104.0
+offset_bottom = 32.0
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="Camera2D/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = SubResource("AtlasTexture_w1n44")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="Camera2D/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 36.0
+offset_right = 68.0
+offset_bottom = 32.0
+texture_normal = SubResource("AtlasTexture_w1n44")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 72.0
+offset_right = 104.0
+offset_bottom = 32.0
+texture_normal = SubResource("AtlasTexture_w1n44")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="Camera2D/VBoxContainer"]
+offset_top = 36.0
+offset_right = 104.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Camera2D/VBoxContainer"]
+offset_top = 44.0
+offset_right = 104.0
+offset_bottom = 75.0
+text = "Play"

@@ -1,0 +1,58 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=16 format=3 uid="uid://b1ypvajxx47s2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dtpid"]
+animation = &"ghost_blow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4114"]
+animation = &"ghost_hold_breath"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i0q8y"]
+animation = &"ghost_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j28x7"]
+animation = &"ghost_inhale"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u7ic4"]
+animation = &"ghost_stunned"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_htsr6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mf73h"]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a3sop"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_71gqw"]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ftumb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cp5h0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cyel2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_57bxw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3kk8n"]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c5hch"]
+
+[resource]
+states/End/position = Vector2(627, -10)
+states/Start/position = Vector2(-138, -27)
+states/ghost_blow/node = SubResource("AnimationNodeAnimation_dtpid")
+states/ghost_blow/position = Vector2(456, -91)
+states/ghost_hold_breath/node = SubResource("AnimationNodeAnimation_o4114")
+states/ghost_hold_breath/position = Vector2(289, -91)
+states/ghost_idle/node = SubResource("AnimationNodeAnimation_i0q8y")
+states/ghost_idle/position = Vector2(104, 79)
+states/ghost_inhale/node = SubResource("AnimationNodeAnimation_j28x7")
+states/ghost_inhale/position = Vector2(104, -91)
+states/ghost_stunned/node = SubResource("AnimationNodeAnimation_u7ic4")
+states/ghost_stunned/position = Vector2(335, 79)
+transitions = ["ghost_idle", "ghost_inhale", SubResource("AnimationNodeStateMachineTransition_htsr6"), "ghost_inhale", "ghost_hold_breath", SubResource("AnimationNodeStateMachineTransition_mf73h"), "ghost_hold_breath", "ghost_blow", SubResource("AnimationNodeStateMachineTransition_a3sop"), "ghost_blow", "ghost_idle", SubResource("AnimationNodeStateMachineTransition_71gqw"), "ghost_idle", "ghost_stunned", SubResource("AnimationNodeStateMachineTransition_ftumb"), "ghost_inhale", "ghost_stunned", SubResource("AnimationNodeStateMachineTransition_cp5h0"), "ghost_blow", "ghost_stunned", SubResource("AnimationNodeStateMachineTransition_cyel2"), "ghost_hold_breath", "ghost_stunned", SubResource("AnimationNodeStateMachineTransition_57bxw"), "ghost_stunned", "ghost_idle", SubResource("AnimationNodeStateMachineTransition_3kk8n"), "Start", "ghost_idle", SubResource("AnimationNodeStateMachineTransition_c5hch")]
+graph_offset = Vector2(-486, -273)
