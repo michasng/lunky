@@ -7,7 +7,7 @@ class_name CharacterState
 @onready var anim_tree: AnimationNodeStateMachinePlayback = $"../../AnimationTree".get("parameters/playback")
 
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
-# var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var frame_count: int = 0
 
 func get_transition() -> CharacterState:
 	return self
@@ -29,6 +29,7 @@ func default_physics(delta: float):
 
 	var input_direction = Input.get_axis("move_left", "move_right")
 	if input_direction:
+		body.view_dir = input_direction
 		var factor = 1.0 if Input.is_action_pressed("sneak") else body.sprint_factor
 		body.velocity.x = move_toward(
 			body.velocity.x,

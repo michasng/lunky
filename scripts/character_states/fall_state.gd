@@ -5,11 +5,13 @@ class_name FallState
 @onready var tile_above_default_target_pos: Vector2i = tile_above.target_position
 @onready var tile_in_front: RayCast2D = $"../../TileInFront"
 @onready var tile_in_front_default_target_pos: Vector2i = tile_in_front.target_position
+var ledge_cooloff_frames: int = 10
 
 func get_transition() -> CharacterState:
 	if body.is_on_floor():
 		return $"../StandState"
-	if not tile_above.get_collider() and tile_in_front.get_collider():
+	if (not body.previous_state is LedgeState or frame_count > ledge_cooloff_frames) and \
+		not tile_above.get_collider() and tile_in_front.get_collider():
 		return $"../LedgeState"
 	return self
 
