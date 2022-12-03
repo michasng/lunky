@@ -758,6 +758,7 @@ position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_qjwgc")
 
 [node name="HitboxSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -45)
 texture = SubResource("PlaceholderTexture2D_4bgq8")
 

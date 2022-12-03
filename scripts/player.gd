@@ -39,6 +39,7 @@ var previous_state: State = State.DOOR
 func _ready():
 	anim_tree.travel('enter')
 
+
 func _physics_process(delta: float):
 	# first transition then physics for responsiveness
 	var next_state = get_transition()
@@ -46,6 +47,7 @@ func _physics_process(delta: float):
 		set_state(next_state, delta)
 
 	handle_physics(delta)
+
 
 func get_transition():
 	match current_state:
@@ -75,8 +77,10 @@ func get_transition():
 				return State.JUMP
 	return current_state
 
+
 func _exit_state(_previous_state: State, _next_state: State, _delta: float):
 	pass
+
 
 func _enter_state(next_state: State, _previous_state: State, delta: float):
 	if next_state == State.JUMP:
@@ -92,7 +96,7 @@ func _enter_state(next_state: State, _previous_state: State, delta: float):
 		var direction = tile_above.target_position.normalized()
 		if direction == Vector2.RIGHT:
 			tile += Vector2(pixel_per_meter, 0)
-		position = tile + Vector2(-direction.x * hit_box.x / 2, hit_box.y - ledge_offset)
+		position = tile + Vector2(-direction.x * (hit_box.x / 2 - 1), hit_box.y - ledge_offset)
 		anim_tree.travel("ledge_grab")
 
 
