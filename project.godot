@@ -10,9 +10,39 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Node",
+"class": &"CharacterState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/character_state.gd"
+}, {
+"base": "CharacterState",
+"class": &"EnterState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/enter_state.gd"
+}, {
+"base": "CharacterState",
+"class": &"ExitState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/exit_state.gd"
+}, {
+"base": "CharacterState",
+"class": &"FallState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/fall_state.gd"
+}, {
+"base": "Node",
 "class": &"Globals",
 "language": &"GDScript",
 "path": "res://scripts/globals.gd"
+}, {
+"base": "CharacterState",
+"class": &"JumpState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/jump_state.gd"
+}, {
+"base": "CharacterState",
+"class": &"LedgeState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/ledge_state.gd"
 }, {
 "base": "TileMap",
 "class": &"Level",
@@ -28,12 +58,24 @@ _global_script_classes=[{
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://scripts/player.gd"
+}, {
+"base": "CharacterState",
+"class": &"StandState",
+"language": &"GDScript",
+"path": "res://scripts/character_states/stand_state.gd"
 }]
 _global_script_class_icons={
+"CharacterState": "",
+"EnterState": "",
+"ExitState": "",
+"FallState": "",
 "Globals": "",
+"JumpState": "",
+"LedgeState": "",
 "Level": "",
 "LevelGenerator": "",
-"Player": ""
+"Player": "",
+"StandState": ""
 }
 
 [application]
@@ -128,4 +170,4 @@ sneak={
 
 [physics]
 
-2d/default_gravity=3767.04
+2d/default_gravity=4608.0
