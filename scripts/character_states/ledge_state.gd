@@ -24,7 +24,7 @@ func enter_state(_previous_state: CharacterState, _delta: float):
 	if body.view_dir == body.RIGHT:
 		tile += Vector2(pixel_per_meter, 0)
 	body.position = tile + Vector2(
-		-body.view_dir * (hit_box.x / 2 - 1),
+		-body.view_dir * (hit_box.x / 2 - 1), # -1 pixel, to avoid weird edge collisions
 		hit_box.y - ledge_offset
 	)
 	anim_tree.travel("ledge_grab")

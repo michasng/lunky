@@ -6,12 +6,24 @@ class_name FallState
 @onready var tile_in_front: RayCast2D = $"../../TileInFront"
 @onready var tile_in_front_default_target_pos: Vector2i = tile_in_front.target_position
 
-var ledge_cooloff_frames: int = 10
+# avoid getting stuck on a ledge and being unable to drop
+@export var ledge_cooloff_frames: int = 10
 # allows jumping slightly after leaving the ground for better play-feel
-var coyote_frames = 4
+@export var coyote_frames = 4
+# buffer jumps slightly before reaching the ground for better play-feel
+@export var jump_buffer_frames = 4
+
+var previous_state_standing: bool
+var jump_pressed_frame: int
+
+func jump_buffered() -> bool:
+	return jump_pressed_frame != -1 and \
+		frame_count - jump_pressed_frame <= jump_buffer_frames
 
 func get_transition() -> CharacterState:
-	if frame_count <= coyote_frames and Input.is_action_just_pressed('jump'):
+	if previous_state_standing and \
+		frame_count <= coyote_frames and \
+		Input.is_action_just_pressed('jump'):
 		return $"../JumpState"
 	if body.is_on_floor():
 		return $"../StandState"
@@ -20,8 +32,10 @@ func get_transition() -> CharacterState:
 		return $"../LedgeState"
 	return self
 
-func enter_state(_previous_state: CharacterState, _delta: float):
+func enter_state(previous_state: CharacterState, _delta: float):
 	anim_tree.travel("jump_fall")
+	jump_pressed_frame = -1
+	previous_state_standing = previous_state is StandState
 
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass
@@ -32,3 +46,5 @@ func handle_physics(delta: float):
 	if input_direction:
 		tile_above.target_position = input_direction * tile_above_default_target_pos
 		tile_in_front.target_position = input_direction * tile_in_front_default_target_pos
+	if Input.is_action_just_pressed("jump"):
+		jump_pressed_frame = frame_count

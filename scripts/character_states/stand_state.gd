@@ -1,15 +1,17 @@
 extends CharacterState
 class_name StandState
 
+var jump_buffered: bool = false
+
 func get_transition() -> CharacterState:
-	if Input.is_action_just_pressed('jump'):
+	if Input.is_action_just_pressed('jump') or jump_buffered:
 		return $"../JumpState"
 	if not body.is_on_floor():
 		return $"../FallState"
 	return self
 
-func enter_state(_previous_state: CharacterState, _delta: float):
-	pass
+func enter_state(previous_state: CharacterState, _delta: float):
+	jump_buffered = previous_state is FallState and previous_state.jump_buffered() 
 
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass
