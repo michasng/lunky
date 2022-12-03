@@ -779,7 +779,6 @@ current = true
 zoom = Vector2(0.5, 0.5)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_qjwgc")
 
@@ -789,9 +788,9 @@ position = Vector2(0, -45)
 texture = SubResource("PlaceholderTexture2D_4bgq8")
 
 [node name="TileAbove" type="RayCast2D" parent="."]
-position = Vector2(0, -115)
+position = Vector2(0, -108)
 target_position = Vector2(50, 0)
 
 [node name="TileInFront" type="RayCast2D" parent="."]
-position = Vector2(0, -88)
+position = Vector2(0, -74)
 target_position = Vector2(50, 0)

@@ -20,6 +20,10 @@ const LEFT = -1
 const RIGHT = 1
 var view_dir = 0
 
+func _ready():
+	current_state.enter_state(previous_state, 0)
+
+
 func _physics_process(delta: float):
 	# first transition then physics for responsiveness
 	var next_state = current_state.get_transition()
@@ -28,6 +32,7 @@ func _physics_process(delta: float):
 
 	current_state.frame_count += 1
 	current_state.handle_physics(delta)
+
 
 func set_state(next_state: CharacterState, delta: float):
 	# print(state_names[next_state])
