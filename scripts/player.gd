@@ -5,13 +5,13 @@ var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # values taken from the real game
-var spelunky2_fps = 60 # number of physics calculations per second, actually
-var friction: float = 0.015 * spelunky2_fps * pixel_per_meter
-var acceleration: float = 0.032 * pow(spelunky2_fps, 2) * pixel_per_meter
-var max_speed: float = 0.0725 * spelunky2_fps * pixel_per_meter
-var sprint_factor: float = 2
-var jump_power: float = 0.18 * pow(spelunky2_fps, 2) * pixel_per_meter
-# var gravity: float = 0.01 * pow(spelunky2_fps, 2) * pixel_per_meter
+@export var spelunky2_fps = 60 # number of physics calculations per second, actually
+@export var friction: float = 0.015 * spelunky2_fps * pixel_per_meter
+@export var acceleration: float = 0.032 * pow(spelunky2_fps, 2) * pixel_per_meter
+@export var max_speed: float = 0.0725 * spelunky2_fps * pixel_per_meter
+@export var sprint_factor: float = 2
+@export var jump_power: float = 0.18 * pow(spelunky2_fps, 2) * pixel_per_meter
+# @export var gravity: float = 0.01 * pow(spelunky2_fps, 2) * pixel_per_meter
 
 @onready var current_state: CharacterState = $"States/EnterState"
 @onready var previous_state: CharacterState = current_state

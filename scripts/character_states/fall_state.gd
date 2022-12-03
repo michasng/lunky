@@ -13,7 +13,7 @@ class_name FallState
 # buffer jumps slightly before reaching the ground for better play-feel
 @export var jump_buffer_frames = 4
 
-var previous_state_standing: bool
+var can_coyote_jump: bool
 var jump_pressed_frame: int
 
 func jump_buffered() -> bool:
@@ -21,7 +21,7 @@ func jump_buffered() -> bool:
 		frame_count - jump_pressed_frame <= jump_buffer_frames
 
 func get_transition() -> CharacterState:
-	if previous_state_standing and \
+	if can_coyote_jump and \
 		frame_count <= coyote_frames and \
 		Input.is_action_just_pressed('jump'):
 		return $"../JumpState"
@@ -35,7 +35,7 @@ func get_transition() -> CharacterState:
 func enter_state(previous_state: CharacterState, _delta: float):
 	anim_tree.travel("jump_fall")
 	jump_pressed_frame = -1
-	previous_state_standing = previous_state is StandState
+	can_coyote_jump = previous_state is StandState or previous_state is LedgeState
 
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass
