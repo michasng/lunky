@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca1pmeglnp0i0"]
+
+[ext_resource type="Script" path="res://scenes/player/rope/rope_bundle.gd" id="1_07lvc"]
+[ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="2_m5ayr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sd5mh"]
+radius = 26.0192
+
+[node name="RopeAnchor" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_07lvc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m5ayr")
+hframes = 16
+vframes = 16
+frame = 156
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -38)
+shape = SubResource("CircleShape2D_sd5mh")
