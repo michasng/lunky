@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/player/character_states/fall_state.gd" id="5_kk6qe"]
 [ext_resource type="Script" path="res://scenes/player/character_states/ledge_state.gd" id="6_qbih3"]
 [ext_resource type="Script" path="res://scenes/player/character_states/exit_state.gd" id="7_6lv4w"]
+[ext_resource type="Script" path="res://scenes/player/character_states/climb_rope_state.gd" id="8_6f2oo"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="8_wrjuj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cyi82blpusmx6" path="res://sprites/player_animation_tree.tres" id="9_5yi7c"]
 
@@ -729,11 +730,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjwgc"]
 size = Vector2(72, 90)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4bgq8"]
-size = Vector2(72, 90)
-
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("1_vqwy6")
 
 [node name="States" type="Node" parent="."]
@@ -755,6 +753,9 @@ script = ExtResource("6_qbih3")
 
 [node name="ExitState" type="Node" parent="States"]
 script = ExtResource("7_6lv4w")
+
+[node name="ClimbRopeState" type="Node" parent="States"]
+script = ExtResource("8_6f2oo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -783,11 +784,6 @@ zoom = Vector2(0.5, 0.5)
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_qjwgc")
-
-[node name="HitboxSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -45)
-texture = SubResource("PlaceholderTexture2D_4bgq8")
 
 [node name="TileAbove" type="RayCast2D" parent="."]
 position = Vector2(0, -108)

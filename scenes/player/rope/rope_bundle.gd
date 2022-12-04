@@ -7,7 +7,7 @@ const rope_scene = preload("rope.tscn")
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 
 @export var speed: float = 0.3 * 60 * pixel_per_meter
-@export var throw_distance: float = 7 * pixel_per_meter
+@export var throw_distance: float = 4.5 * pixel_per_meter
 
 var starting_position: Vector2
 

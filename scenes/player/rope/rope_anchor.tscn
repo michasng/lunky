@@ -98,6 +98,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_llw1x")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

@@ -2,6 +2,9 @@ extends CharacterState
 class_name JumpState
 
 func get_transition() -> CharacterState:
+	if not body.rope_contacts.is_empty() and not Input.is_action_pressed("jump") and \
+		(Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")):
+		return $"../ClimbRopeState"
 	if body.is_on_floor():
 		return $"../StandState"
 	if body.velocity.y > 0:

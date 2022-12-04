@@ -22,6 +22,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const LEFT = -1
 const RIGHT = 1
 var view_dir = 0
+var rope_contacts: Array = []
+
 
 func _ready():
 	current_state.enter_state(previous_state, 0)
@@ -54,4 +56,7 @@ func throw_rope():
 	get_parent().add_child(rope_bundle)
 	rope_bundle.throw(position - Vector2(0, hit_box.y / 2))
 
+
+func center_on_tile_horizontally():
+	position.x = floor(position.x / pixel_per_meter) * pixel_per_meter + pixel_per_meter / 2
 

@@ -4,6 +4,10 @@ class_name StandState
 var jump_buffered: bool = false
 
 func get_transition() -> CharacterState:
+	if not body.rope_contacts.is_empty() and \
+		(Input.is_action_pressed("move_up") or \
+		(not body.is_on_floor() and Input.is_action_pressed("move_down"))):
+		return $"../ClimbRopeState"
 	if Input.is_action_just_pressed('jump') or jump_buffered:
 		return $"../JumpState"
 	if not body.is_on_floor():
