@@ -24,7 +24,12 @@ func handle_physics(_delta: float):
 	var input_direction = Input.get_axis("move_up", "move_down")
 	if input_direction:
 		body.velocity = Vector2(0, input_direction * body.max_speed)
+		if input_direction == -1:
+			anim_tree.travel('climb_rope')
+		elif input_direction == 1:
+			anim_tree.travel('climb_rope_down')
 	else:
 		body.velocity = Vector2.ZERO
+		anim_tree.travel('climb_rope_pause')
 	
 	body.move_and_slide()
