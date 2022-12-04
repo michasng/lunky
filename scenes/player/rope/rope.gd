@@ -8,13 +8,15 @@ const rope_segment_scene = preload("rope_segment.tscn")
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 
 @export var max_rope_segments = 6
-@export var touch_force = 1000
+@export var touch_force = 100
 
 var _width: float
 var _segments: Array[PhysicsBody2D] = []
 
+
 func _ready():
 	_width = collision_shape.shape.get_rect().size.x
+
 
 func unroll():
 	# center the rope on the tile
@@ -22,6 +24,8 @@ func unroll():
 	var tile_center: Vector2 = level.map_to_local(tile)
 	position = tile_center
 	spawn_segment(rope_anchor_scene, Vector2.ZERO)
+	$StaticBody2D/PinJoint2D.node_b = _segments.back().get_path()
+	
 
 
 func _on_segment_unrolled():
@@ -72,3 +76,4 @@ func _on_body_entered(body: PhysicsBody2D):
 func _on_body_exited(body: PhysicsBody2D):
 	if body is Player:
 		body.rope_contacts.erase(self)
+

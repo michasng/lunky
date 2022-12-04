@@ -82,7 +82,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llw1x"]
 size = Vector2(24, 128)
 
-[node name="RopeAnchor" type="StaticBody2D"]
+[node name="RopeAnchor" type="RigidBody2D"]
 collision_layer = 0
 script = ExtResource("1_nxoax")
 

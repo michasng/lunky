@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 class_name RopeSegment
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
