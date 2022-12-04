@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const rope_bundle_scene = preload("rope/rope_bundle.tscn")
+const rope_scene = preload("rope/rope.tscn")
 @onready var hit_box: Vector2 = $"HitBox".shape.get_rect().size
 
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
@@ -39,7 +40,10 @@ func _physics_process(delta: float):
 	current_state.handle_physics(delta)
 	
 	if Input.is_action_just_pressed("rope"):
-		throw_rope()
+		if Input.is_action_pressed("move_down"):
+			drop_rope()
+		else:
+			throw_rope()
 
 
 func set_state(next_state: CharacterState, delta: float):
@@ -55,6 +59,13 @@ func throw_rope():
 	var rope_bundle = rope_bundle_scene.instantiate()
 	get_parent().add_child(rope_bundle)
 	rope_bundle.throw(position - Vector2(0, hit_box.y / 2))
+
+
+func drop_rope():
+	var rope = rope_scene.instantiate()
+	get_parent().add_child(rope)
+	rope.position = position + Vector2(view_dir * pixel_per_meter, pixel_per_meter)
+	rope.unroll()
 
 
 func center_on_tile_horizontally():
