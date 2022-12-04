@@ -12,64 +12,58 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"CharacterState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/character_state.gd"
+"path": "res://scenes/player/character_states/character_state.gd"
 }, {
 "base": "CharacterState",
 "class": &"EnterState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/enter_state.gd"
+"path": "res://scenes/player/character_states/enter_state.gd"
 }, {
 "base": "CharacterState",
 "class": &"ExitState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/exit_state.gd"
+"path": "res://scenes/player/character_states/exit_state.gd"
 }, {
 "base": "CharacterState",
 "class": &"FallState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/fall_state.gd"
-}, {
-"base": "Node",
-"class": &"Globals",
-"language": &"GDScript",
-"path": "res://scripts/globals.gd"
+"path": "res://scenes/player/character_states/fall_state.gd"
 }, {
 "base": "CharacterState",
 "class": &"JumpState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/jump_state.gd"
+"path": "res://scenes/player/character_states/jump_state.gd"
 }, {
 "base": "CharacterState",
 "class": &"LedgeState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/ledge_state.gd"
+"path": "res://scenes/player/character_states/ledge_state.gd"
 }, {
 "base": "TileMap",
 "class": &"Level",
 "language": &"GDScript",
-"path": "res://scripts/level.gd"
+"path": "res://scenes/play/level.gd"
 }, {
 "base": "Node2D",
 "class": &"LevelGenerator",
 "language": &"GDScript",
-"path": "res://scripts/level_generator.gd"
+"path": "res://scenes/play/level_generator.gd"
 }, {
 "base": "CharacterBody2D",
 "class": &"Player",
 "language": &"GDScript",
-"path": "res://scripts/player.gd"
+"path": "res://scenes/player/player.gd"
 }, {
 "base": "CharacterState",
 "class": &"StandState",
 "language": &"GDScript",
-"path": "res://scripts/character_states/stand_state.gd"
+"path": "res://scenes/player/character_states/stand_state.gd"
 }]
 _global_script_class_icons={
 "CharacterState": "",
 "EnterState": "",
 "ExitState": "",
 "FallState": "",
-"Globals": "",
 "JumpState": "",
 "LedgeState": "",
 "Level": "",
@@ -81,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Lunky"
-run/main_scene="res://play.tscn"
+run/main_scene="res://scenes/play/play.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

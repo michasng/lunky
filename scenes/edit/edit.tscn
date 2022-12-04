@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp6gbj6kn4po4"]
+[gd_scene load_steps=5 format=3 uid="uid://dd4ocrg34wlrg"]
 
-[ext_resource type="Script" path="res://scripts/level_edit.gd" id="1_0n1q8"]
-[ext_resource type="TileSet" uid="uid://cf04dho0rjbd" path="res://tilesets/editor_tileset.tres" id="1_bkohj"]
-[ext_resource type="Texture2D" uid="uid://g28ymffpphjb" path="res://tilesets/editor_tiles.png" id="3_ngttb"]
+[ext_resource type="TileSet" uid="uid://cf04dho0rjbd" path="res://tilesets/editor_tileset.tres" id="1_uwgcw"]
+[ext_resource type="Script" path="res://scenes/edit/level_edit.gd" id="2_b56ax"]
+[ext_resource type="Texture2D" uid="uid://g28ymffpphjb" path="res://tilesets/editor_tiles.png" id="3_lpp81"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1n44"]
-atlas = ExtResource("3_ngttb")
+atlas = ExtResource("3_lpp81")
 region = Rect2(0, 0, 128, 128)
 
 [node name="Edit" type="Node2D"]
 
 [node name="LevelEdit" type="TileMap" parent="."]
-tile_set = ExtResource("1_bkohj")
+tile_set = ExtResource("1_uwgcw")
 cell_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 196616, 1, 0, 131080, 1, 0, 65544, 1, 0, 8, 1, 0, 7, 1, 0, 6, 1, 0, 5, 1, 0, 4, 1, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, 196610, 589825, 11)
-script = ExtResource("1_0n1q8")
+script = ExtResource("2_b56ax")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
