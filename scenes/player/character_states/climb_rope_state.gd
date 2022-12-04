@@ -23,7 +23,6 @@ func exit_state(_next_state: CharacterState, _delta: float):
 func handle_physics(_delta: float):
 	var input_direction = Input.get_axis("move_up", "move_down")
 	if input_direction:
-		var factor = 1.0 if Input.is_action_pressed("sneak") else body.sprint_factor
 		body.velocity = Vector2(0, input_direction * body.max_speed)
 	else:
 		body.velocity = Vector2.ZERO

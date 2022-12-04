@@ -8,9 +8,10 @@ const rope_segment_scene = preload("rope_segment.tscn")
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 
 @export var max_rope_segments = 6
+@export var touch_force = 1000
 
-var segment_count: int = 0
 var _width: float
+var _segments: Array[PhysicsBody2D] = []
 
 func _ready():
 	_width = collision_shape.shape.get_rect().size.x
@@ -25,25 +26,34 @@ func unroll():
 
 func _on_segment_unrolled():
 	_update_collision_shape()
-	if segment_count < max_rope_segments:
-		spawn_segment(rope_segment_scene, Vector2(0, segment_count * pixel_per_meter))
+	if _segments.size() < max_rope_segments:
+		var previous_segment = _segments.back()
+		var segment = spawn_segment(rope_segment_scene, Vector2(0, _segments.size() * pixel_per_meter))
+		if segment:
+			var pin_joint = PinJoint2D.new()
+			# add joint to the bottom of the previous segment
+			previous_segment.add_child(pin_joint)
+			pin_joint.position = Vector2(0, pixel_per_meter / 2)
+			pin_joint.node_a = previous_segment.get_path()
+			pin_joint.node_b = segment.get_path()
 
 
-func spawn_segment(segment_scene, relative_position: Vector2):
+func spawn_segment(segment_scene, relative_position: Vector2) -> PhysicsBody2D:
 	var tile_coords: Vector2i = level.local_to_map(relative_position + position)
 	if level.is_tile(tile_coords):
 		return
-	segment_count += 1
 	var segment = segment_scene.instantiate()
+	_segments.append(segment)
 	add_child(segment)
 	segment.position = relative_position
 	var next_tile_coords = tile_coords + Vector2i(0, 1)
-	segment.unroll(segment_count >= max_rope_segments or level.is_tile(next_tile_coords))
+	segment.unroll(_segments.size() >= max_rope_segments or level.is_tile(next_tile_coords))
 	segment.connect("unrolled", _on_segment_unrolled)
+	return segment
 
 
 func _update_collision_shape():
-	var height = segment_count * pixel_per_meter
+	var height = _segments.size() * pixel_per_meter
 	# create a new shape, so ropes are independent of each other
 	collision_shape.shape = RectangleShape2D.new()
 	collision_shape.shape.size = Vector2(_width, height)
@@ -53,6 +63,10 @@ func _update_collision_shape():
 func _on_body_entered(body: PhysicsBody2D):
 	if body is Player:
 		body.rope_contacts.append(self)
+		var direction = sign(position.x - body.position.x)
+		for segment in _segments:
+			if segment is RigidBody2D:
+				segment.apply_force(Vector2(direction * touch_force, 0), body.position)
 
 
 func _on_body_exited(body: PhysicsBody2D):
