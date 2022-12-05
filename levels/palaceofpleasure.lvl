@@ -1,0 +1,207 @@
+// ------------------------------
+//  PALACE OF PLEASURE LEVEL (BABYLON)
+// ------------------------------
+
+\-size 4 5									// level size in rooms
+\-back_room_chance 0						// % chance of a second room (default = 5%)
+\-back_room_interconnection_chance 0		// % chance of a second room interconnection (default = 20%)
+\-back_room_hidden_door_chance 0			// 1/N chance of a hidden door (default = 500)
+\-back_room_hidden_door_cache_chance 0		// 1/N chance of a hidden door to a cache (default = 1000)
+\-mount_chance 5000							// 1/N chance of a mount (default = 5000)
+\-altar_room_chance 0						// 1/N chance of an altar room (default = 14)
+\-idol_room_chance 0						// 1/N chance of an idol room (default = 10)
+\-floor_side_spread_chance 10				// 1/N chance of a spreadable floor spreading to its side (default = 10)
+\-floor_bottom_spread_chance 5				// 1/N chance of a spreadable floor spreading to its bottom (default = 5)
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?palace_floor				u
+\?treasure_vaultchest		R
+\?palace_entrance			C
+\?palace_table				c
+\?palace_table_tray			j
+\?palace_chandelier			v
+\?palace_candle				h
+\?palace_bookcase			B
+\?litwalltorch				O
+\?elevator					V
+\?stone_floor				>
+\?bone_block				f
+\?treasure					t	// Gold (30%), gem (30%), treasure chest (20%), crate (10%), bones/pot (5%), or nothing (5%)
+\?clover					Q
+\?cursed_pot				<
+
+\?madametusk				M
+\?bodyguard					b
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_0-0 // TOP FLOOR
+////////////////////////////////////////////////////////////////////////////////
+
+uuuuuuuuuu
+u000v00u00
+u000000u00
+u000000u0B
+u000000uB0
+uhL000000B
+u0L0c00000
+uuPuuuuuuu
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_0-1 // Madame Tusk
+////////////////////////////////////////////////////////////////////////////////
+
+uuuuuuuuuu
+0v000000v0
+0000000000
+0000000000
+0000000000
+Bh00M000h0
+b00uuuu00b
+uuBuuuuBuu
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_0-2
+////////////////////////////////////////////////////////////////////////////////
+
+uuuuuuuuuu
+00000v000u
+000000000u
+000000B00u
+00000B000u
+BB0j0000hu
+000c000L0u
+uuuuuuuPuu
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_1-0 // BOTTOM FLOOR
+////////////////////////////////////////////////////////////////////////////////
+
+uuLuuuuuuu
+uuL0v00000
+uuL000uu00
+00L000uu00
+I0LBBBuuh0
+uuL0000000
+uuL0b00000
+uuPuuuuuuu
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_1-1 // Entrance
+////////////////////////////////////////////////////////////////////////////////
+
+\!dual
+0000000000 uu0uuuu0uu
+0000000000 0000v00000
+00=0000000 0000000000
+0000====00 0000000000
+0=0======0 0000000000
+0=000000== 00B0h000hB
+==00b0C0=0 c00B00D000
+==V======= uuuuuuuuuu
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_1-2
+////////////////////////////////////////////////////////////////////////////////
+
+uuuuuuuLuu
+00uQ0v0L0u
+00uu000L0u
+00ut000L0u
+0huuBBBL0u
+B000000Lhu
+00000b0L0u
+uuuuuuuuuu
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_2-0 // DUNGEON
+////////////////////////////////////////////////////////////////////////////////
+
+>>L>>>>>>>
+>0L0000000
+>0L0000000
+>0L0000000
+>0L0000000
+>0L0b00O00
+>>>>>>0000
+>>>>>>>>>>
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_2-1
+////////////////////////////////////////////////////////////////////////////////
+
+>>>>>>>>>>
+0000000000
+0000000000
+0000000000
+0000000000
+00O0000O00
+0000xx0000
+>>>>>>>>>>
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_2-2
+////////////////////////////////////////////////////////////////////////////////
+
+>>>'>>>>>>
+000000000>
+000000000>
+000000000>
+000000000>
+0000000ff>
+0000000f<>
+>>>(>>>>>>
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_3-0 // TREASURE ROOM
+////////////////////////////////////////////////////////////////////////////////
+
+>>>>>>>>>>
+>^00000000
+>>00000000
+>>RRRR0000
+>>>>>>0000
+>>00000000
+>>RRRR0000
+>>>>>>>>>>
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_3-1
+////////////////////////////////////////////////////////////////////////////////
+
+'>'>'>>>>>
+0000000000
+0000000000
+0000000000
+0000000000
+0000000O00
+0000000000
+(>(>(>>>>>
+
+////////////////////////////////////////////////////////////////////////////////
+\.palaceofpleasure_3-2 // TREASURE ROOM ENTRANCE
+////////////////////////////////////////////////////////////////////////////////
+
+\!dual
+0000000000 >>>>>>>>>>
+0000011100 000000000>
+0000111110 000000000>
+0000==1100 000000000>
+0000==1==0 000000000>
+00000000=0 O00O00O00>
+00T00b0/11 000b000D0>
+0011====1= >>>>>>>>>>

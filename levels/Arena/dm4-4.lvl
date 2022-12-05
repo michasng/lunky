@@ -1,0 +1,126 @@
+// ------------------------------
+//  DEATHMATCH 4-4 (TIDE POOL)
+// ------------------------------
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?bone_block				f
+
+\?pagoda_floor				=
+\?pagoda_floor%50			-
+\?pagoda_platform			p
+\?climbing_pole				V
+\?spikes					^
+\?giantclam					C
+\?fountain_drain			*
+\?slidingwall_switch		a
+\?slidingwall_ceiling		A
+\?water						w
+
+\?push_block				4
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+==A====A==
+=000==000=
+1S0a11a0S1
+1101111011
+0000000000
+0000000000
+0000000000
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+==========
+V00000000V
+V=000000=V
+V=00ww00=V
+V==wI0w==V
+V=*w==w*=V
+V=wwwwww=V
+V=111111=V
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+==A====A==
+=000==000=
+1S0a11a0S1
+1101111011
+0000000000
+0000000000
+0000000000
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+==0====0==
+=0000000==
+==0====000
+=000000000
+R00000000=
+==========
+^^^^^^^^^^
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+V11A11A11V
+V00000000V
+V00000000V
+Va000000aV
+=00000000=
+1000000001
+^^^^^^^^^^
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+==0====0==
+=0000000==
+==0====000
+=000000000
+R00000000=
+==========
+^^^^^^^^^^
+XXXXXXXXXX

@@ -1,7 +1,8 @@
 extends Node2D
 class_name LevelGenerator
 
-@export var level: Level
+@onready var level: Level = $"../Level"
+@onready var level_file: LevelFile = $"../LevelFile"
 
 
 func _ready():

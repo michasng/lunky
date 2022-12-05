@@ -1,0 +1,93 @@
+// ------------------------------
+//  DEATHMATCH 6-2 (ICE CAVES)
+// ------------------------------
+//  BOUNCE HOUSE
+
+\-size 2 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?icefloor					c
+\?icefloor%50				y
+\?thinice					T
+\?cookfire					r
+\?spikes					^
+\?upsidedown_spikes			v
+\?push_block				4
+\?falling_platform			F
+\?landmine					m
+\?spring_trap				s
+
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+1vvvvvvvvv
+1000000000
+1S00000000
+11100000F0
+1000000000
+1S000F0000
+1110000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+1111111111
+1vvvvvvvvv
+1000000000
+1S00000000
+11100000F0
+1000000000
+1S000F0000
+1110000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+1000000000
+1sssssssss
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+1000000000
+1sssssssss
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX

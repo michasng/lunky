@@ -1,0 +1,120 @@
+// ------------------------------
+//  DEATHMATCH 3-3 (VOLCANA)
+// ------------------------------
+//  SMELTER
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?falling_platform			F
+\?powder_keg				o
+\?chainandblocks_ceiling	C
+\?factory_generator			A
+\?conveyorbelt_left			<
+\?conveyorbelt_right		>
+\?lava						w
+
+\?push_block				4
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+1C11111111
+1000010000
+10S0000000
+1011F11111
+1010001000
+101S000000
+1011111F>>
+1000011000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+11wwwwww11
+o1wwwwww1o
+1111111111
+000o11o000
+0001111000
+>>011110<<
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+1C11111111
+1000010000
+10S0000000
+1011F11111
+1010001000
+101S000000
+1011111F>>
+1000011000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+101ww1o000
+101ww110<<
+1011111000
+1000000010
+1000001111
+1110111111
+wwwwwwwwww
+wwwwwwwwww
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+0010I00100
+<<1FFFF1>>
+1110000111
+0000000000
+1000000001
+1>>0000<<1
+wwwwwwwwww
+wwwwwwwwww
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+101ww1o000
+101ww110<<
+1011111000
+1000000010
+1000001111
+1110111111
+wwwwwwwwww
+wwwwwwwwww

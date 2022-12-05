@@ -1,0 +1,426 @@
+// ------------------------------
+//  AREA EIGHT (COSMIC OCEAN) - DWELLING
+// ------------------------------
+
+\-back_room_chance 0						// % chance of a second room (default = 5%)
+\-back_room_interconnection_chance 0		// % chance of a second room interconnection (default = 20%)
+\-back_room_hidden_door_chance 0			// 1/N chance of a hidden door (default = 500)
+\-back_room_hidden_door_cache_chance 0		// 1/N chance of a hidden door to a cache (default = 1000)
+\-mount_chance 0							// 1/N chance of a mount (default = 5000)
+\-altar_room_chance 0						// 1/N chance of an altar room (default = 14)
+\-idol_room_chance 0						// 1/N chance of an idol room (default = 10)
+\-floor_side_spread_chance 10				// 1/N chance of a spreadable floor spreading to its side (default = 10)
+\-floor_bottom_spread_chance 5				// 1/N chance of a spreadable floor spreading to its bottom (default = 5)
+\-machine_bigroom_chance 0					// 1/N chance of spawning a machine big room (default = 0)
+\-machine_wideroom_chance 0					// 1/N chance of spawning a machine wide room (default = 0)
+\-machine_tallroom_chance 0					// 1/N chance of spawning a machine tall room (default = 0)
+\-machine_rewardroom_chance 0				// 1/N chance of spawning a machine reward room (default = 0)
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?chunk_ground				5
+\?chunk_air					6
+\?chunk_door				8 	// Chunk with entrance or exit in it
+	
+\?empty						0
+\?floor						1
+\?floor%50					2	// 50% chance of floor, 50% chance of empty
+\?minewood_floor			=
+\?floor_hard				X	// Indestructible ("hard") floor
+\?floor_hard%50%floor		Y	// 50% chance of hard floor, 50% chance of regular floor
+\?adjacent_floor			Z	// Hard floor or empty depending on whether this leads to another second layer room
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?platform					p
+\?door						9	// Exit or entrance
+\?locked_door				/	// Locked door to other Layer
+\?spikes					^
+\?push_block				4
+	
+\?treasure					t	// Gold (30%), gem (30%), treasure chest (20%), crate (10%), bones/pot (5%), or nothing (5%)
+\?litwalltorch				O
+
+//\?snake					?
+//\?caveman					?
+\?caveman_asleep%50			n
+\?turkey					u
+	
+\?altar						x	// Each side of the altar
+\?vault_wall				|	// Vault wall
+\?coffin					g	// Character coffin (NPC/Player)
+	
+\?shop_sign					K
+\?shop_door					k
+\?lamp_hang					l
+\?shop_wall					.
+\?shop_item					S
+\?wanted_poster				W
+\?shopkeeper				$	// Shopkeeper and items
+
+// ------------------------------
+//  LEVEL CHANCES
+// ------------------------------
+
+\%arrowtrap_chance 			25
+\%totemtrap_chance 			35
+\%pushblock_chance 			32
+
+// ------------------------------
+//  MONSTER CHANCES
+// ------------------------------
+
+\+snake					40
+\+bat					60
+\+caveman				90
+\+spider				40
+\+hornedlizard			40
+\+mole					75
+\+critterdungbeetle		80
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.entrance
+////////////////////////////////////////////////////////////////////////////////
+
+\!ignore
+1111111111
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+1111111111
+
+\!flip
+=======0L0
+002====pPp
+000====0L0
+00000000L0
+00009000L0
+0pp====pp0
+000====000
+1111111111
+
+\!flip
+11=====111
+0100000000
+0=00900L00
+0======P00
+0000000L00
+0000000L00
+0000000L00
+1111001111
+
+==========
+002====200
+000====000
+0000000000
+0008000000
+0000000000
+0000000000
+1111111111
+
+////////////////////////////////////////////////////////////////////////////////
+\.exit
+////////////////////////////////////////////////////////////////////////////////
+
+==========
+002====200
+000====000
+0000000000
+0008000000
+0000000000
+0000000000
+11======11
+
+////////////////////////////////////////////////////////////////////////////////
+\.side
+////////////////////////////////////////////////////////////////////////////////
+
+\!flip
+1111221110
+1111221110
+1111221111
+0011220000
+0000220111
+11100L0011
+11111P1111
+00000L0000
+
+\!flip
+0000000000
+0000000600
+0000000000
+0000000000
+0000000000
+0006000000
+0000000000
+0000000000
+
+
+\!flip
+1111100000
+0000000000
+0000060000
+0000000000
+0000000000
+0000000000
+00ppppp000
+0000000000
+
+\!flip
+11=0000000
+11=00===00
+11=00===00
+11=00=====
+===00=1000
+004^^00011
+00=11=1011
+===1111211
+
+\!flip
+0000021100
+0000002201
+0000001111
+0000001111
+000====111
+000000=111
+000000=112
+111=pp=111
+
+\!flip
+=1===22211
+2200001122
+=1100L0000
+==1==P0000
+00110L0000
+00000L0000
+0000110000
+1110111122
+
+\!flip
+1111221111
+0211000000
+011102111p
+011100212p
+011200112p
+011120112p
+0000000111
+1111221111
+
+\!flip
+1121100011
+0021000111
+0000011100
+0000042000
+00011110L0
+1111111pPp
+11110000L0
+1111001111
+
+\!flip
+0011111111
+00211f1200
+0001111000
+0000ff0000
+0000ff0000
+000ff11000
+0011114000
+111111ppp1
+
+\!flip
+====011===
+=0000200L=
+==00=1==P=
+10001100L0
+000020L0L0
+11111pPp11
+240000L001
+1111001111
+
+\!flip
+0011121111
+0000000220
+0000000000
+0=pp000000
+0=00000000
+1=000000pp
+04^^^1^^^^
+1111111111
+
+\!flip
+1111221111
+0011000220
+0000020000
+0111111==p
+0112000000
+1111001110
+200000211^
+1111111111
+
+\!flip
+==00000000
+==10000000
+0000000L00
+======pPpp
+0000000L00
+0011111L00
+0022004L00
+1111201111
+
+\!flip
+011f111===
+0fff011=00
+1114011110
+1111011===
+1100011===
+000001111=
+0000011100
+pp11111100
+
+////////////////////////////////////////////////////////////////////////////////
+\.coffin_player		// Coffin room holding a dead player (both sides must be open)
+////////////////////////////////////////////////////////////////////////////////
+
+0000110100
+0====10==0
+0=000000=0
+0=L0g01010
+0=P====0=0
+00L0000000
+00L0000100
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.coffin_player_vertical	// Coffin room holding a dead player (opened on all sides)
+////////////////////////////////////////////////////////////////////////////////
+
+\!flip
+0=0000===0
+0=000000=0
+000000g010
+00100====0
+0L11000000
+=P==000000
+0L00000000
+0L00000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.chunk_door
+////////////////////////////////////////////////////////////////////////////////
+
+\!flip
+009000
+0===00
+=====2
+
+\!flip
+000000
+000020
+090010
+
+\!flip
+020000
+010900
+11===2
+
+////////////////////////////////////////////////////////////////////////////////
+\.chunk_ground
+////////////////////////////////////////////////////////////////////////////////
+
+\!ignore
+00000
+00000
+00000
+
+\!flip
+01210
+01210
+p111p
+
+\!flip
+11110
+02220
+00000
+
+00000
+02220
+11111
+
+\!flip
+00110
+22110
+1111p
+
+\!rare
+\!flip
+0f000
+011f0
+1f111
+
+\!rare
+\!flip
+ppppp
+00000
+22222
+
+////////////////////////////////////////////////////////////////////////////////
+\.chunk_air
+////////////////////////////////////////////////////////////////////////////////
+
+00000
+00000
+00000
+
+=====
+00000
+=====
+
+22222
+00000
+22222
+
+\!flip
+11100
+22200
+00000
+
+\!flip
+11100
+11100
+22200
+
+01110
+02220
+00000
+
+01110
+01110
+02220
+
+\!flip
+22200
+11100
+22200
+
+02220
+01110
+02220
+
+11111
+22222
+00000

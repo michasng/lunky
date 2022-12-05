@@ -1,0 +1,100 @@
+// ------------------------------
+//  DEATHMATCH 4-1 (TIDE POOL)
+// ------------------------------
+//  CLAM BAKE
+
+\-size 2 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?bone_block				f
+
+\?pagoda_floor				=
+\?pagoda_floor%50			-
+\?pagoda_platform			p
+\?climbing_pole				V
+\?spikes					^
+\?giantclam					C
+\?fountain_drain			*
+\?slidingwall_switch		a
+\?slidingwall_ceiling		A
+\?water						w
+
+\?push_block				4
+\?crate						R
+
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+1000000000
+==00V00000
+1000V00000
+1S00V0000=
+===0V0111=
+1000V00000
+1S00V00000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+1111111111
+1000000000
+==00V00000
+1000V00000
+1S00V0000=
+===0V0111=
+1000V00000
+1S00V00000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+===0V00000
+11=====Cww
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+===0V00000
+11=====Cww
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX

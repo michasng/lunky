@@ -1,0 +1,120 @@
+// ------------------------------
+//  DEATHMATCH 6-5 (DWELLING)
+// ------------------------------
+//  FORGOTTEN GOD
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?icefloor					c
+\?icefloor%50				y
+\?thinice					T
+\?cookfire					r
+\?spikes					^
+\?upsidedown_spikes			v
+\?push_block				4
+\?falling_platform			F
+\?landmine					m
+\?spring_trap				s
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+0000000000
+c00000TTTT
+ccc0000000
+cc00000000
+cc00000000
+cc00000000
+c000s00000
+c000100000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+0000000000
+Tc000000cT
+0000000000
+000c00c000
+000cI0c000
+000c11c000
+00sccccs00
+001cccc100
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+0000000000
+c00000TTTT
+ccc0000000
+cc00000000
+cc00000000
+cc00000000
+c000s00000
+c000100000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+cc00000000
+1100000000
+vv00000cc0
+00000000cc
+00c0s00Scc
+ss111111cc
+1111111ccc
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+0ccc11ccc0
+0000110000
+000SccS000
+0001111000
+s00cccc00s
+111cccc111
+c1cccccc1c
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+cc00000000
+1100000000
+vv00000cc0
+00000000cc
+00c0s00Scc
+ss111111cc
+1111111ccc
+XXXXXXXXXX

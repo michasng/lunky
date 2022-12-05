@@ -1,0 +1,120 @@
+// ------------------------------
+//  DEATHMATCH 8-4 (SUNKEN CITY)
+// ------------------------------
+//  PIPE DREAM
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?sunken_floor				=
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?spikes					^
+\?push_block				4
+\?pipe						p
+\?regenerating_block		r
+\?bigspear_trap				C
+\?giant_frog				n
+\?water						w
+
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+100ppppppp
+=00p0111ww
+=0000pppww
+=pR0010p0p
+1p11p100Sr
+0p0=p====0
+000=p11100
+p001ppp000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+ppp0000ppp
+rr000000rr
+111p^^p111
+pp1p11p1pp
+1p1p==p1p1
+=ppwI0wpp=
+=C0w11wC0=
+pppwwwwppp
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+100ppppppp
+=00p0111ww
+=0000pppww
+=pR0010p0p
+1p11p100Sr
+0p0=p====0
+000=p11100
+p001ppp000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+p=p111100r
+p1pp001111
+p111r00ppp
+p0pp0S0rww
+00p11p==ww
+R00==p1100
+100==ppppp
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+rC0wwwwC0r
+pppwwwwppp
+p1=wwww=1p
+11=pwwp=11
+ppppwwpppp
+0rrwwwwrr0
+pppp^^pppp
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+p=p111100r
+p1pp001111
+p111r00ppp
+p0pp0S0rww
+00p11p==ww
+R00==p1100
+100==ppppp
+XXXXXXXXXX

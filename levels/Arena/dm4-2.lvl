@@ -1,0 +1,110 @@
+// ------------------------------
+//  DEATHMATCH 4-2 (TIDE POOL)
+// ------------------------------
+//  BARRIER REEF
+
+\-size 2 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?bone_block				f
+
+\?pagoda_floor				=
+\?pagoda_floor%50			-
+\?pagoda_platform			p
+\?climbing_pole				V
+\?spikes					^
+\?giantclam					C
+\?fountain_drain			*
+\?slidingwall_switch		a
+\?slidingwall_ceiling		A
+\?water						w
+
+\?push_block				4
+\?crate						R
+
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+\!ignore
+1111111111
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+1111111111
+
+===A111=A=
+100000000=
+1S00000000
+===0000000
+1000000a00
+1S00000000
+===0001100
+1110000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+===A111=A=
+100000000=
+1S00000000
+===0000000
+1000000a00
+1S00000000
+===0001100
+1110000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+wwwww*ww0w
+Rwwwwwww1w
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+wwwww*ww0w
+Rwwwwwww1w
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX

@@ -1,0 +1,131 @@
+// ------------------------------
+//  SUN CHALLENGE
+// ------------------------------
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor%50					2	// 50% chance of floor, 50% chance of empty
+\?floor_hard				X	// Indestructible ("hard") floor
+\?floor_hard%50%floor		Y	// 50% chance of hard floor, 50% chance of regular floor
+\?adjacent_floor			Z	// Hard floor or empty depending on whether this leads to another second layer room
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?door2						D	// Door to other Layer
+
+\?treasure					t	// Gold (30%), gem (30%), treasure chest (20%), crate (10%), bones/pot (5%), or nothing (5%)
+\?litwalltorch				O
+\?lightarrow				h
+
+\?shop_sign					K
+\?shop_door					k
+\?lamp_hang					l
+\?shop_wall					.
+\?shop_wall%50				;
+\?shop_woodwall				:
+\?wanted_poster				W
+\?merchant					#
+\?forcefield				?
+\?timed_forcefield			)
+\?challenge_waitroom		!
+\?forcefield_top			'
+\?alien_generator			A
+\?regenerating_block		r
+\?bigspear_trap				C
+\?crossbow					*
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.challenge_entrance	// Dual entrance to the challenge rooms facing right, flipped for other side
+////////////////////////////////////////////////////////////////////////////////
+
+\!dual
+1111111111 0O00000O0L
+1111111111 11=)==)=1P
+11.......K 111111111L
+1..0l00... ....'.A.'L
+..0000W0.0 .00000000L
+.0000000:0 .00000000L
+.0D00#00k0 .0D000000L
+:::::::::: XXXX?XXX!X
+
+////////////////////////////////////////////////////////////////////////////////
+\.challenge_0-0
+////////////////////////////////////////////////////////////////////////////////
+
+XXXXXXXXXX
+X1A1000000
+X100000000
+X100000C01
+X1rr001111
+X1rr000000
+X====L0000
+X1A11P1100
+
+////////////////////////////////////////////////////////////////////////////////
+\.challenge_0-1
+////////////////////////////////////////////////////////////////////////////////
+
+XXXXXXXXXX
+rrr'11'rrr
+C0000000C0
+1110000111
+1A100001A1
+0000h00000
+0000==0000
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.challenge_0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+XXXXXXXXXX
+X1A1000000
+X100000000
+X100000C01
+X1rr001111
+X1rr000000
+X====L0000
+X1A11P1100
+
+////////////////////////////////////////////////////////////////////////////////
+\.challenge_1-0
+////////////////////////////////////////////////////////////////////////////////
+
+X0000L0000
+X0000L0000
+X00000===0
+X0===P1A10
+X0=11L10l0
+X0000L0000
+X0000L0000
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.challenge_1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+X0000L0000
+X0000L0000
+X00000===0
+X0===P1A10
+X0=11L10l0
+X0000L0000
+X0000L0000
+XXXXXXXXXX

@@ -1,0 +1,96 @@
+// ------------------------------
+//  DEATHMATCH 7-1 (NEO BABYLON)
+// ------------------------------
+//  ZAP CAGE
+
+\-size 2 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?babylon_floor				=
+\?babylon_floor%50			-
+
+\?push_block				4
+\?laser_trap				A
+\?spark_trap				x
+\?forcefield				(
+\?timed_forcefield			)
+\?forcefield_top			'
+\?elevator					V
+\?mushroom_base				T
+
+\?crate						R
+
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+=='=======
+==00000000
+='00000000
+=000000000
+=000000000
+=000000000
+=000000000
+=(00000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+=='=======
+==00000000
+='00000000
+=000000000
+=000000000
+=000000000
+=000000000
+=(00000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+==0S0=S000
+==(=======
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+==0S0=S000
+==(=======
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX

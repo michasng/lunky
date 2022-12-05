@@ -1,0 +1,118 @@
+// ------------------------------
+//  DEATHMATCH 1-4 (DWELLING)
+// ------------------------------
+//  EXCAVATION
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?minewood_floor			=
+\?floor_hard				X	// Indestructible ("hard") floor
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?spikes					^
+\?cavemanboss				B
+\?push_block				4
+\?bone_block				f
+\?cookfire					r
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+1100011110
+1000000000
+1000000000
+100L000000
+11=P=11111
+1f1L1f111f
+111Lfff111
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+1000000001
+00L0I00L00
+00P====P00
+00L0000L00
+00L0LL0L00
+====PP====
+1111LL1111
+11R1LL1R11
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+1111111111
+1100011110
+1000000000
+1000000000
+100L000000
+11=P=11111
+1f1L1f111f
+111Lfff111
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+111L1ff111
+110L111100
+100L000000
+1S0L001S00
+110L001100
+11===11111
+1111111111
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+1111LL1111
+1001LL1001
+0000LL0000
+0000LL0000
+0000LL0000
+1100LL0011
+1========1
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+111L1ff111
+110L111100
+100L000000
+1S0L001S00
+110L001100
+11===11111
+1111111111
+XXXXXXXXXX

@@ -50,6 +50,11 @@ _global_script_classes=[{
 "path": "res://scenes/play/level.gd"
 }, {
 "base": "Node2D",
+"class": &"LevelFile",
+"language": &"GDScript",
+"path": "res://scenes/play/level_file.gd"
+}, {
+"base": "Node2D",
 "class": &"LevelGenerator",
 "language": &"GDScript",
 "path": "res://scenes/play/level_generator.gd"
@@ -88,6 +93,7 @@ _global_script_class_icons={
 "JumpState": "",
 "LedgeState": "",
 "Level": "",
+"LevelFile": "",
 "LevelGenerator": "",
 "Player": "",
 "Rope": "",

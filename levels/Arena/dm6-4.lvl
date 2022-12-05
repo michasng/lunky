@@ -1,0 +1,120 @@
+// ------------------------------
+//  DEATHMATCH 6-4 (DWELLING)
+// ------------------------------
+//  PLATFORMER
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?icefloor					c
+\?icefloor%50				y
+\?thinice					T
+\?cookfire					r
+\?spikes					^
+\?upsidedown_spikes			v
+\?push_block				4
+\?falling_platform			F
+\?landmine					m
+\?spring_trap				s
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+cccccccccc
+c000cc000c
+1S001100S1
+1101111011
+0000000000
+0000000000
+0000000000
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+cc111111cc
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000I00000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+cccccccccc
+c000cc000c
+1S001100S1
+1101111011
+0000000000
+0000000000
+0000000000
+0000000000
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+00TTTTTccc
+0000000111
+0000000111
+0000000001
+0000000000
+0000000000
+^^^^^^^^^^
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+cccccccccc
+cccccccccc
+1111111111
+1111111111
+0111111110
+0000000000
+^^^^^^^^^^
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+00TTTTTccc
+0000000111
+0000000111
+0000000001
+0000000000
+0000000000
+^^^^^^^^^^
+XXXXXXXXXX

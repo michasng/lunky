@@ -3,40 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/rope/rope_segment.gd" id="1_fwh3x"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="1_j3mgl"]
 
-[sub_resource type="Animation" id="Animation_sjnuc"]
-resource_name = "unroll"
-length = 0.064
-step = 0.016
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.016, 0.032, 0.048),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12)]
-}
-
-[sub_resource type="Animation" id="Animation_x5fmc"]
-resource_name = "hang"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 12)]
-}
-
-[sub_resource type="Animation" id="Animation_qf0bw"]
+[sub_resource type="Animation" id="Animation_t0dr3"]
 resource_name = "cap"
 length = 0.1
 step = 0.033
@@ -53,14 +20,47 @@ tracks/0/keys = {
 "values": [Vector2i(5, 12)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4j0xk"]
-_data = {
-"cap": SubResource("Animation_qf0bw"),
-"hang": SubResource("Animation_x5fmc"),
-"unroll": SubResource("Animation_sjnuc")
+[sub_resource type="Animation" id="Animation_p0uvc"]
+resource_name = "hang"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 12)]
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tflog"]
+[sub_resource type="Animation" id="Animation_lhjeg"]
+resource_name = "unroll"
+length = 0.064
+step = 0.016
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.016, 0.032, 0.048),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ayuwu"]
+_data = {
+"cap": SubResource("Animation_t0dr3"),
+"hang": SubResource("Animation_p0uvc"),
+"unroll": SubResource("Animation_lhjeg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08lsa"]
 size = Vector2(24, 100)
 
 [node name="RopeSegment" type="RigidBody2D"]
@@ -76,10 +76,10 @@ frame = 193
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4j0xk")
+"": SubResource("AnimationLibrary_ayuwu")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tflog")
+shape = SubResource("RectangleShape2D_08lsa")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

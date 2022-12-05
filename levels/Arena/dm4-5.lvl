@@ -1,0 +1,137 @@
+// ------------------------------
+//  DEATHMATCH 4-5 (TIDE POOL)
+// ------------------------------
+//  EIGHT TREASURES
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?bone_block				f
+
+\?pagoda_floor				=
+\?pagoda_floor%50			-
+\?pagoda_platform			p
+\?climbing_pole				V
+\?spikes					^
+\?giantclam					C
+\?fountain_drain			*
+\?slidingwall_switch		a
+\?slidingwall_ceiling		A
+\?water						w
+
+\?push_block				4
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+\!ignore
+1111111111
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+1111111111
+
+====A==111
+=a00000000
+=000000000
+==00000000
+=000000000
+=S0000=000
+===000=S00
+=11100=111
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+=A==I0==A=
+00a=ww=a00
+V00=ww=00V
+V0==ww==0V
+V0=w**w=0V
+V0=wwww=0V
+V00wwww00V
+V==1111==V
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+====A==111
+=a00000000
+=000000000
+==00000000
+=000000000
+=S0000=000
+===000=S00
+=11100=111
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+====001=A=
+=00=00000=
+=R00000000
+======000=
+111100000=
+11a0000000
+1111=C00==
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+V11000011V
+V===RR===V
+V========V
+==========
+000====000
+00R====R00
+==========
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+====001=A=
+=00=00000=
+=R00000000
+======000=
+111100000=
+11a0000000
+1111=C00==
+XXXXXXXXXX

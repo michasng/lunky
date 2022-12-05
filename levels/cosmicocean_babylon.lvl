@@ -1,0 +1,532 @@
+// ------------------------------
+//  AREA EIGHT (COSMIC OCEAN) - BABYLON
+// ------------------------------
+
+\-back_room_chance 0						// % chance of a second room (default = 5%)
+\-back_room_interconnection_chance 0		// % chance of a second room interconnection (default = 20%)
+\-back_room_hidden_door_chance 0			// 1/N chance of a hidden door (default = 500)
+\-back_room_hidden_door_cache_chance 0		// 1/N chance of a hidden door to a cache (default = 1000)
+\-mount_chance 0							// 1/N chance of a mount (default = 5000)
+\-altar_room_chance 0						// 1/N chance of an altar room (default = 14)
+\-idol_room_chance 0						// 1/N chance of an idol room (default = 10)
+\-floor_side_spread_chance 10				// 1/N chance of a spreadable floor spreading to its side (default = 10)
+\-floor_bottom_spread_chance 5				// 1/N chance of a spreadable floor spreading to its bottom (default = 5)
+\-max_liquid_particles 2000					// Maximum number of liquid drops that can be created until no more liquid rooms are allowed
+\-flagged_liquid_rooms 6					// Number of random rooms that will be flagged for being eligible to spawn liquid
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?chunk_ground				5
+\?chunk_air					6
+\?chunk_door				8 	// Chunk with entrance or exit in it
+	
+\?empty						0
+\?floor						1
+\?floor%50					2	// 50% chance of floor, 50% chance of empty
+\?babylon_floor				=
+\?babylon_floor%50%floor	-
+\?floor_hard				X	// Indestructible ("hard") floor
+\?floor_hard%50%floor		Y	// 50% chance of hard floor, 50% chance of regular floor
+\?adjacent_floor			Z	// Hard floor or empty depending on whether this leads to another second layer room
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+\?door						9	// Exit or entrance
+\?door2						D	// Door to other Layer
+\?push_block				4
+\?laser_trap				^
+\?spark_trap				A
+\?forcefield				(
+\?timed_forcefield			)
+\?forcefield_top			'
+\?elevator					V
+
+\?treasure					t	// Gold (30%), gem (30%), treasure chest (20%), crate (10%), bones/pot (5%), or nothing (5%)
+\?litwalltorch				O
+\?mushroom_base				T
+
+\?lamassu					U
+//\?olmite					?
+//\?empty_mech				?
+
+\?altar						x	// Each side of the altar
+\?idol						I	// Idol statue
+\?idol_floor				i	// Idol block
+\?vault_wall				|	// Vault wall
+\?coffin					g	// Character coffin (NPC/Player)
+	
+\?shop_sign					K
+\?shop_door					k
+\?lamp_hang					l
+\?shop_wall					.
+\?shop_item					S
+\?wanted_poster				W
+\?shopkeeper				$	// Shopkeeper and items
+
+\?thief						J
+
+\?lava						w
+\?lava%50%floor				a	// 50% chance of lava, %50 chance of floor
+
+// ------------------------------
+//  LEVEL CHANCES
+// ------------------------------
+
+\%lasertrap_chance 			35
+\%sparktrap_chance 			35
+
+// ------------------------------
+//  MONSTER CHANCES
+// ------------------------------
+
+\+olmite			30
+\+ufo				30
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.entrance
+////////////////////////////////////////////////////////////////////////////////
+
+\!ignore
+==========
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+==========
+
+\!flip
+0000000000
+0000000000
+=090000000
+========00
+========00
+0000000000
+0000000000
+==========
+
+\!flip
+0000000000
+=090000000
+=========0
+=='=='=='0
+0000000000
+0000000000
+==)==)==)=
+==========
+
+////////////////////////////////////////////////////////////////////////////////
+\.exit
+////////////////////////////////////////////////////////////////////////////////
+
+==========
+==========
+==========
+0000000000
+0080000000
+0000000000
+0000000000
+==========
+
+==-=======
+='0====='=
+000====000
+0000000000
+0080000000
+0000000000
+0)000000)0
+==========
+
+\!flip
+\!liquid
+==========
+=wwwwwwww=
+=w======w=
+==========
+0000000000
+0009000=00
+00======00
+==========
+
+////////////////////////////////////////////////////////////////////////////////
+\.side
+////////////////////////////////////////////////////////////////////////////////
+
+\!ignore
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+
+\!flip
+0000000000
+0000000000
+0000000000
+0000000000
+==000==0T0
+==0T0==011
+0001000011
+11111--11=
+
+\!flip
+00000-0000
+====0=====
+=00000000'
+=000000000
+0000000000
+=000000000
+=00U00000)
+=====0====
+
+\!flip
+0-==000000
+00V-000000
+0000000000
+0000000000
+0000000V00
+0000000A-0
+0000000000
+0000000000
+
+\!flip
+0000000000
+0000000000
+0000600000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+
+\!flip
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+000000T000
+0000211110
+0000000112
+
+\!flip
+\!liquid
+0000000000
+0000000000
+=0000000=0
+=000U000=0
+=========0
+=wwwwwww=0
+=========0
+0000000000
+
+\!flip
+\!liquid
+0000000000
+0========0
+0000==0000
+0000000000
+00=wwwww=0
+======ww=V
+00000=ww=0
+00000====0
+
+\!flip
+11======00
+1111112100
+====11====
+2111112110
+01V1111110
+0101111110
+0001011000
+0000010000
+
+\!flip
+0=00000000
+0=00000000
+0=00===0==
+0=00=0000=
+0000=00=0=
+0000=00=0=
+0000000=00
+0000000=00
+
+\!flip
+1111111120
+1111111110
+====--=120
+=====-=120
+0000000000
+0000000000
+0000000000
+0000000000
+
+\!flip
+0000000000
+0000000000
+0000000000
+0000000000
+0000000T00
+0000021112
+10T0211111
+1111011000
+
+=======--=
+0000000000
+0000000000
+0000000000
+5000050000
+0000000000
+0000000000
+000000====
+
+\!liquid
+0000000000
+0000==0000
+0000000000
+=wwwwwwww=
+=wwwwwwww=
+==========
+0000000000
+0000000000
+
+=--=======
+6000060000
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+==========
+
+00=--===00
+0000000000
+====00====
+0000000000
+0000000000
+0000000000
+0000000000
+==========
+
+===0000===
+0000001100
+0000==1100
+0000==1100
+0000==0100
+0000==1100
+000V==1110
+=====001=0
+
+\!flip
+00000000==
+00000=00==
+00000000=0
+00=====0=0
+00-V===000
+===0======
+0000000000
+0000000000
+
+\!flip
+00000=---=
+0000000000
+0000000000
+00000=0000
+00000=0000
+00T00==000
+01112==000
+11111=====
+
+\!flip
+==========
+=00=======
+=00====0==
+=0===000==
+000===0==0
+0000000000
+0000000000
+==00======
+
+\!flip
+======-===
+0000000--0
+0000000000
+0000000000
+0000000000
+0=2=0=0=2=
+0=0=2=0=0=
+-==-==-=0=
+
+\!flip
+====0='===
+0='=000=00
+000=000000
+000===0000
+0000==0000
+0=00==0=0=
+0=)0==)=0=
+===0====0=
+
+////////////////////////////////////////////////////////////////////////////////
+\.coffin_player		// Coffin room holding a dead player (both sides must be open)
+////////////////////////////////////////////////////////////////////////////////
+
+=======000
+==00000000
+=000g0000=
+=0====0=0=
+0000000000
+0000000000
+=V======V=
+==========
+
+////////////////////////////////////////////////////////////////////////////////
+\.coffin_player_vertical	// Coffin room holding a dead player (opened on all sides)
+////////////////////////////////////////////////////////////////////////////////
+
+00======0=
+000000000=
+0000g0000=
+000=====0=
+0000000000
+0000000000
+=0V=====V=
+=0======0=
+
+////////////////////////////////////////////////////////////////////////////////
+\.chunk_door
+////////////////////////////////////////////////////////////////////////////////
+
+\!flip
+009000
+0====0
+======
+
+\!flip
+000000
+0000=0
+0900=0
+
+\!flip
+0=0000
+0=0900
+======
+
+////////////////////////////////////////////////////////////////////////////////
+\.chunk_ground
+////////////////////////////////////////////////////////////////////////////////
+
+00000
+00000
+00000
+
+\!ignore
+=====
+=0000
+00000
+
+\!flip
+=V===
+=0000
+00000
+
+
+00=00
+00=00
+00000
+
+\!liquid
+=www=
+=www=
+=====
+
+\!flip
+00000
+=0000
+=0000
+
+\!flip
+00000
+0=00=
+0=00=
+
+00000
+=====
+=====
+
+////////////////////////////////////////////////////////////////////////////////
+\.chunk_air
+////////////////////////////////////////////////////////////////////////////////
+
+00000
+00000
+00000
+
+\!flip
+===00
+=A=00
+===00
+
+\!flip
+00000
+000A0
+A0000
+
+\!flip
+=0000
+=0000
+=====
+
+\!flip
+=====
+=0000
+=0000
+
+\!flip
+===00
+===00
+===00
+
+\!liquid
+=====
+=www=
+=====
+
+\!flip
+=0000
+=0000
+=0000
+
+0===0
+0===0
+00000
+
+=000=
+=000=
+=====
+
+=====
+=000=
+=000=
+
+\!flip
+=====
+=000=
+=0===

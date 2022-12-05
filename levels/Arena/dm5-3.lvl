@@ -1,0 +1,121 @@
+// ------------------------------
+//  DEATHMATCH 5-3 (TEMPLE)
+// ------------------------------
+//  BURIAL CHAMBER
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?ladder					L
+\?ladder_plat				P	// Ladder with platform across it
+
+\?temple_floor				=
+\?quicksand					q
+\?crushtrap					b
+\?crushtraplarge			B
+\?bone_block				f
+
+\?push_block				4
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+111111111=
+q00000000=
+q0S0000000
+q11==00000
+q1====0000
+q======000
+qqq0000000
+qqq000000=
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+ffffbbffff
+ffff==ffff
+ffffI0ffff
+ffB0ffB0ff
+ff00ff00ff
+====ff====
+====ff====
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+111111111=
+q00000000=
+q0S0000000
+q11==00000
+q1====0000
+q======000
+qqq0000000
+qqq000000=
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+qqq000000=
+q11===0000
+q1=====000
+q=======00
+q000000000
+q0S000000=
+111111111=
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+====ff====
+ffB0ffB0ff
+ff00ff00ff
+ffffRRffff
+ffff==ffff
+ffffbbffff
+1111111111
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+qqq000000=
+q11===0000
+q1=====000
+q=======00
+q000000000
+q0S000000=
+111111111=
+XXXXXXXXXX

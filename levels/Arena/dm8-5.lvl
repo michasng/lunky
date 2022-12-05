@@ -1,0 +1,120 @@
+// ------------------------------
+//  DEATHMATCH 8-4 (SUNKEN CITY)
+// ------------------------------
+//  PASSIONS
+
+\-size 3 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?sunken_floor				=
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?spikes					^
+\?push_block				4
+\?pipe						p
+\?regenerating_block		r
+\?bigspear_trap				C
+\?giant_frog				n
+\?water						w
+
+\?crate						R
+
+\?idol_hold					I
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+pp00000000
+p0000rr000
+pr11111111
+ppp0000000
+01rr000000
+011000rr00
+011000rr00
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+1111111111
+0000000000
+0pp0I00pp0
+11p1111p11
+r00011000r
+10S0pp0S01
+11p1111p11
+11p1111p11
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+1111111111
+pp00000000
+p0000rr000
+pr11111111
+ppp0000000
+01rr000000
+011000rr00
+011000rr00
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+01rr000000
+ppp0000000
+pr11111111
+p0000rr000
+pp00000000
+rrr111111r
+^^^^^^^^^^
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+10S0110S01
+r000rr000r
+11p1111p11
+0pp0000pp0
+0000000000
+rrr1111rrr
+^^^^^^^^^^
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-2
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+01rr000000
+ppp0000000
+pr11111111
+p0000rr000
+pp00000000
+rrr111111r
+^^^^^^^^^^
+XXXXXXXXXX

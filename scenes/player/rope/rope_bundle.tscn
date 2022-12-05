@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/rope/rope_bundle.gd" id="1_07lvc"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="2_m5ayr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sd5mh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw6w3"]
 radius = 26.0192
 
 [node name="RopeAnchor" type="CharacterBody2D"]
@@ -18,4 +18,4 @@ frame = 156
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -38)
-shape = SubResource("CircleShape2D_sd5mh")
+shape = SubResource("CircleShape2D_dw6w3")

@@ -1,0 +1,58 @@
+// ------------------------------
+//  BEEHIVE SUBTHEME
+// ------------------------------
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?beehive_floor				c
+\?beehive_floor%50			z
+//\?honey_upwards			<
+//\?honey_downwards			>
+
+// ------------------------------
+//  MONSTER CHANCES
+// ------------------------------
+
+\+bee			5
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.beehive
+////////////////////////////////////////////////////////////////////////////////
+
+cccc00cccc
+ccz0000zcc
+ccz0000zcc
+0000000000
+0000zz0000
+ccz0000zcc
+ccz0000zcc
+cccc00cccc
+
+////////////////////////////////////////////////////////////////////////////////
+\.beehive_entrance
+////////////////////////////////////////////////////////////////////////////////
+
+\!flip
+\!dual
+cccc00cccc cccc00cccc
+cccz00zccc cc0000zccc
+ccz00000cc ccz000000c
+000000D000 000000D000
+0000cccc00 00000ccc00
+ccz0000ccc c000000ccc
+cccz00zccc cc00000zcc
+cccc00cccc cccz00zccc

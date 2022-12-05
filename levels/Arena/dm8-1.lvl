@@ -1,0 +1,93 @@
+// ------------------------------
+//  DEATHMATCH 8-1 (SUNKEN CITY)
+// ------------------------------
+//  SCAR TISSUE
+
+\-size 2 2									// level size in rooms
+
+// ------------------------------
+//  TILE CODES
+// ------------------------------
+
+\?empty						0
+\?floor						1
+\?sunken_floor				=
+\?floor_hard				X	// Indestructible ("hard") floor
+
+\?spikes					^
+\?push_block				4
+\?pipe						p
+\?regenerating_block		r
+\?bigspear_trap				C
+\?giant_frog				n
+\?water						w
+
+\?crate						R
+
+\?dm_spawn_point			S
+
+// ------------------------------
+//  TEMPLATES
+// ------------------------------
+//
+//  !ignore		Ignore the following template. This is to make building rooms easier.
+//  !flip		Flip the following template to make another. i.e. The following template = two templates.
+//  !onlyflip	Flip the following template (original is ignored)
+//  !dual		The next template contains both a frontal and back room
+//  !rare		The next template is rare (only 5% chance of a rare template being used).
+//  !hard		The next template is hard (only appear in the second two levels of the area).
+//  !liquid		The next template contains liquid (used to limit the number of liquid drops)
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-0
+////////////////////////////////////////////////////////////////////////////////
+
+111rrrr111
+r111r1rr1r
+r0000rrr0r
+1r0000000r
+rr0000000r
+r00000000r
+rS0000rS0r
+r10000rrrr
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom0-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+111rrrr111
+r111r1rr1r
+r0000rrr0r
+1r0000000r
+rr0000000r
+r00000000r
+rS0000rS0r
+r10000rrrr
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-0
+////////////////////////////////////////////////////////////////////////////////
+
+111r11rr11
+11rrrrrrrr
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+
+////////////////////////////////////////////////////////////////////////////////
+\.setroom1-1
+////////////////////////////////////////////////////////////////////////////////
+
+\!onlyflip
+111r11rr11
+11rrrrrrrr
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXX
