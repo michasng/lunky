@@ -4,10 +4,10 @@ class_name LevelGenerator
 @onready var level: Level = $"../Level"
 @onready var level_file: LevelFile = $"../LevelFile"
 
-const grid_cell_size_tiles = Vector2i(10, 8)
+const room_size = Vector2i(10, 8)
 
-var entrance_cell: Vector2i
-var exit_cell: Vector2i
+var entrance_room: Vector2i
+var exit_room: Vector2i
 var grid_size: Vector2i
 var grid: Array[Array] = [] # 2D matrix of Vector2i (no deeply nested types supported)
 var rng = RandomNumberGenerator.new()
@@ -44,19 +44,19 @@ func _init_empty_grid():
 
 
 func _generate_critical_path():
-	entrance_cell = Vector2i(randi_range(0, grid_size.x - 1), 0)
+	entrance_room = Vector2i(randi_range(0, grid_size.x - 1), 0)
 	
-	var current_cell: Vector2i = entrance_cell
-	var next_cell: Vector2i = current_cell
-	while next_cell.y < grid_size.y:
-		current_cell = next_cell
+	var current_room: Vector2i = entrance_room
+	var next_room: Vector2i = current_room
+	while next_room.y < grid_size.y:
+		current_room = next_room
 		var room_direction: Vector2i = _random_room_direction()
-		next_cell = current_cell + room_direction
-		if next_cell.x < 0 || next_cell.x >= grid_size.x:
+		next_room = current_room + room_direction
+		if next_room.x < 0 || next_room.x >= grid_size.x:
 			room_direction = Vector2i.DOWN
-			next_cell = current_cell + room_direction
-		grid[current_cell.y][current_cell.x] = room_direction
-	exit_cell = current_cell
+			next_room = current_room + room_direction
+		grid[current_room.y][current_room.x] = room_direction
+	exit_room = current_room
 
 
 func _random_room_direction() -> Vector2i:
@@ -75,11 +75,11 @@ func _random_room_direction() -> Vector2i:
 func _pick_template_types(previous_grid_coords: Vector2i, grid_coords: Vector2i) -> Array[String]:
 	var previous_direction = grid[previous_grid_coords.y][previous_grid_coords.x]
 	var room_direction = grid[grid_coords.y][grid_coords.x]
-	if grid_coords == entrance_cell:
+	if grid_coords == entrance_room:
 		if room_direction == Vector2i.DOWN:
 			return ["entrance_drop"]
 		return ["entrance", "entrance_drop"]
-	if grid_coords == exit_cell:
+	if grid_coords == exit_room:
 		if previous_direction == Vector2i.DOWN:
 			return ["exit_notop"]
 		return ["exit", "exit_notop"]
@@ -95,10 +95,10 @@ func _pick_template_types(previous_grid_coords: Vector2i, grid_coords: Vector2i)
 
 
 func _place_template(template: Dictionary, grid_coords: Vector2i):
-	var cell_corner_tile_coords = grid_coords * grid_cell_size_tiles
-	for row in grid_cell_size_tiles.y:
-		for col in grid_cell_size_tiles.x:
-			var tile_coords_in_cell = Vector2i(col, row)
+	var room_corner_tile_coords = grid_coords * room_size
+	for row in room_size.y:
+		for col in room_size.x:
+			var tile_coords_in_room = Vector2i(col, row)
 			var tile_code = template["tiles"][row][col]
 			if tile_code == "1":
-				level.set_tile(cell_corner_tile_coords + tile_coords_in_cell, "floor")
+				level.set_tile(room_corner_tile_coords + tile_coords_in_room, "floor")
