@@ -24,7 +24,7 @@ func _ready():
 	load_file(level_file_path)
 
 var level_settings: Dictionary # maps settings name to value(s)
-var tile_codes: Dictionary # maps tile name to code
+var tile_codes: Dictionary # maps tile code to name
 var level_chances: Dictionary # maps event name to chance (% or 1/n)
 var monster_chances: Dictionary # maps monster name to chance (% or 1/n)
 var templates: Dictionary # maps template type to array of templates
@@ -156,11 +156,10 @@ func _parse_level_setting(values: Array[String]):
 
 
 func _parse_tile_code(values: Array[String]):
-	var tile = values[0]
-	var args = values.slice(1)
-	assert(args.size() == 1, "tile codes must contain 1 argument")
-	tile_codes[tile] = args
-	if debug_logging: print('tile_code: ', tile, ', args: ', args)
+	var tile_name = values[0]
+	var tile_code = values[1]
+	tile_codes[tile_code] = tile_name
+	if debug_logging: print('tile_code "', tile_code, '" stands for ', tile_name)
 
 
 func _parse_level_chance(values: Array[String]):
