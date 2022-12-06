@@ -20,7 +20,7 @@ func throw(pos: Vector2):
 
 func _physics_process(_delta: float):
 	if get_slide_collision_count() > 0 or position.distance_to(starting_position) >= throw_distance:
-		var rope = rope_scene.instantiate()
+		var rope: Rope = rope_scene.instantiate()
 		get_parent().add_child(rope)
 		rope.position = position
 		rope.unroll()

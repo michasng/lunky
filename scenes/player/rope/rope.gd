@@ -25,7 +25,6 @@ func unroll():
 	position = tile_center
 	spawn_segment(rope_anchor_scene, Vector2.ZERO)
 	$StaticBody2D/PinJoint2D.node_b = _segments.back().get_path()
-	
 
 
 func _on_segment_unrolled():
