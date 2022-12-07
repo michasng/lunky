@@ -100,5 +100,5 @@ func _place_template(template: Dictionary, grid_coords: Vector2i):
 		for col in room_size.x:
 			var tile_coords_in_room = Vector2i(col, row)
 			var tile_code = template["tiles"][row][col]
-			var tile_name = level_file.tile_codes[tile_code]
-			level.set_tile(room_corner_tile_coords + tile_coords_in_room, tile_name)
+			var tile = level_file.tile_codes[tile_code]
+			level.set_tile(room_corner_tile_coords + tile_coords_in_room, tile['name'], tile['chance'])
