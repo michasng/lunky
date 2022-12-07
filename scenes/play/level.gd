@@ -1,12 +1,22 @@
 extends TileMap
 class_name Level
 
+# enum values correspond to atlas IDs
 enum atlas {
+	MISC = 0,
 	DWELLING = 1,
+	WOOD = 2,
 }
 
 const tiles: Dictionary = {
 	'floor': [atlas.DWELLING, Vector2i(0, 0)],
+	'minewood_floor': [atlas.WOOD, Vector2i(7, 2)],
+	'bone_block': [atlas.DWELLING, Vector2i(10, 2)],
+	'spikes': [atlas.DWELLING, Vector2i(5, 9)],
+	'push_block': [atlas.DWELLING, Vector2i(7, 0)],
+	'ladder': [atlas.DWELLING, Vector2i(4, 1)],
+	'ladder_plat': [atlas.DWELLING, Vector2i(4, 2)],
+	'platform': [atlas.MISC, Vector2i(0, 1)],
 }
 
 
