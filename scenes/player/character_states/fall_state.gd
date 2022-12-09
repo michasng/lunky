@@ -1,11 +1,6 @@
 extends CharacterState
 class_name FallState
 
-@onready var tile_above: RayCast2D = $"../../TileAbove"
-@onready var tile_above_default_target_pos: Vector2i = tile_above.target_position
-@onready var tile_in_front: RayCast2D = $"../../TileInFront"
-@onready var tile_in_front_default_target_pos: Vector2i = tile_in_front.target_position
-
 # avoid getting stuck on a ledge and being unable to drop
 @export var ledge_cooloff_frames: int = 10
 # allows jumping slightly after leaving the ground for better play-feel
@@ -31,7 +26,7 @@ func get_transition() -> CharacterState:
 	if body.is_on_floor():
 		return $"../StandState"
 	if (not body.previous_state is LedgeState or frame_count > ledge_cooloff_frames) and \
-		not tile_above.get_collider() and tile_in_front.get_collider():
+		not body.tile_above.get_collider() and body.tile_in_front.get_collider():
 		return $"../LedgeState"
 	return self
 
@@ -45,7 +40,5 @@ func exit_state(_next_state: CharacterState, _delta: float):
 
 func handle_physics(delta: float):
 	default_physics(delta)
-	tile_above.target_position = body.view_dir * tile_above_default_target_pos
-	tile_in_front.target_position = body.view_dir * tile_in_front_default_target_pos
 	if Input.is_action_just_pressed("jump"):
 		jump_pressed_frame = frame_count

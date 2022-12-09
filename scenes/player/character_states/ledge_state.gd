@@ -19,13 +19,13 @@ func get_transition() -> CharacterState:
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.velocity.y = 0
 	# move the player directly to the ledge
-	var player_center = body.position - hit_box / 2
+	var player_center = body.position - body.hit_box / 2
 	var tile = floor(player_center / pixel_per_meter) * pixel_per_meter
 	if body.view_dir == body.RIGHT:
 		tile += Vector2(pixel_per_meter, 0)
 	body.position = tile + Vector2(
-		-body.view_dir * (hit_box.x / 2 - 1), # -1 pixel, to avoid weird edge collisions
-		hit_box.y - ledge_offset
+		-body.view_dir * (body.hit_box.x / 2 - 1), # -1 pixel, to avoid weird edge collisions
+		body.hit_box.y - ledge_offset
 	)
 	anim_tree.travel("ledge_grab")
 

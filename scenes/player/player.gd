@@ -4,6 +4,11 @@ class_name Player
 const rope_bundle_scene = preload("rope/rope_bundle.tscn")
 const rope_scene = preload("rope/rope.tscn")
 @onready var hit_box: Vector2 = $"HitBox".shape.get_rect().size
+@onready var sprite: Sprite2D = $"Sprite2D"
+@onready var tile_above: RayCast2D = $"TileAbove"
+@onready var tile_above_default_target_pos: Vector2i = tile_above.target_position
+@onready var tile_in_front: RayCast2D = $"TileInFront"
+@onready var tile_in_front_default_target_pos: Vector2i = tile_in_front.target_position
 
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,7 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const LEFT = -1
 const RIGHT = 1
-var view_dir = 0
+var view_dir: int = 0
 var rope_contacts: Array = []
 
 
@@ -38,12 +43,6 @@ func _physics_process(delta: float):
 
 	current_state.frame_count += 1
 	current_state.handle_physics(delta)
-	
-	if Input.is_action_just_pressed("rope"):
-		if Input.is_action_pressed("move_down"):
-			drop_rope()
-		else:
-			throw_rope()
 
 
 func set_state(next_state: CharacterState, delta: float):
@@ -70,4 +69,13 @@ func drop_rope():
 
 func center_on_tile_horizontally():
 	position.x = floor(position.x / pixel_per_meter) * pixel_per_meter + pixel_per_meter / 2
+
+
+func handle_turn(turn_dir: int):
+	if view_dir == turn_dir:
+		return
+	view_dir = turn_dir
+	sprite.flip_h = turn_dir < 0
+	tile_above.target_position = view_dir * tile_above_default_target_pos
+	tile_in_front.target_position = view_dir * tile_in_front_default_target_pos
 
