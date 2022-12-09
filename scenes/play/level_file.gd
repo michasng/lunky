@@ -142,31 +142,31 @@ func _parse_level_setting(values: Array[String]):
 	var setting_name = values[0]
 	var args = values.slice(1)
 	var setting: Variant
-	if setting_name == 'size':
+	if setting_name == "size":
 		assert(args.size() == 2, 'level setting "size" must contain 2 arguments')
 		setting = Vector2i(int(args[0]), int(args[1]))
 	else:
 		assert(args.size() == 1, "level settings must contain 1 argument")
-		if setting_name == 'liquid_gravity':
+		if setting_name == "liquid_gravity":
 			setting = float(args[0])
 		else:
 			setting = int(args[0])
 	level_settings[setting_name] = setting
-	if debug_logging: print('level_setting: ', setting_name, ', value: ', setting)
+	if debug_logging: print("level_setting: ", setting_name, ", value: ", setting)
 
 
 func _parse_tile_code(values: Array[String]):
 	var tile_and_chance = values[0]
 	var tile_code = values[1]
-	var tile_parts = tile_and_chance.split('%')
+	var tile_parts = tile_and_chance.split("%")
 	var tile_name = tile_parts[0]
 	var chance = int(tile_parts[1]) if tile_parts.size() == 2 else 100
 	tile_codes[tile_code] = {
-		'name': tile_name,
-		'chance': chance,
+		"name": tile_name,
+		"chance": chance,
 	}
 	if debug_logging:
-		var chance_str = '' if chance == 100 else " (" + chance + "%)"
+		var chance_str = "" if chance == 100 else " (" + chance + "%)"
 		print('tile_code "', tile_code, '" stands for ', tile_name, chance_str)
 
 
@@ -176,7 +176,7 @@ func _parse_level_chance(values: Array[String]):
 	assert(args.size() == 1 or args.size() == 4, "level chances must contain 1 or 4 arguments")
 	args = _to_int_list(args) # sometimes %, sometimes 1/n
 	level_chances[chance_name] = args
-	if debug_logging: print('level_chance: ', chance_name, ', args: ', args)
+	if debug_logging: print("level_chance: ", chance_name, ", args: ", args)
 
 
 func _parse_monster_chance(values: Array[String]):
@@ -185,13 +185,14 @@ func _parse_monster_chance(values: Array[String]):
 	assert(args.size() == 1 or args.size() == 4, "monster chances must contain 1 or 4 arguments")
 	args = _to_int_list(args) # sometimes %, sometimes 1/n
 	monster_chances[monster] = args
-	if debug_logging: print('monster_chance: ', monster, ', args: ', args)
+	if debug_logging: print("monster_chance: ", monster, ", args: ", args)
 
 
 func _new_template() -> Dictionary:
 	var template = {
 		"settings": [],
 		"tiles": [],
+		"backroom_tiles": [],
 	}
 	templates[_current_template_type].append(template)
 	_template_complete = false
@@ -202,7 +203,7 @@ func _parse_template_type(values: Array[String]):
 	assert(values.size() == 1, "template type must not contain arguments")
 	_current_template_type = values[0]
 	templates[_current_template_type] = []
-	if debug_logging: print('template_type: ', _current_template_type)
+	if debug_logging: print("template_type: ", _current_template_type)
 
 
 func _parse_template_setting(values: Array[String]):
@@ -217,7 +218,7 @@ func _parse_template_setting(values: Array[String]):
 		if not (template["tiles"] as Array).is_empty():
 			template = _new_template()
 	template["settings"].append(setting)
-	if debug_logging: print('template_setting: ', setting)
+	if debug_logging: print("template_setting: ", setting)
 
 
 func _parse_template_tiles(line: String):
@@ -227,8 +228,12 @@ func _parse_template_tiles(line: String):
 		template = _new_template()
 	else:
 		template = templates[_current_template_type].back()
-	(template["tiles"] as Array).append(line.split())
-	if debug_logging: print('template_tiles: ', line)
+	
+	var layers = line.split(" ")
+	(template["tiles"] as Array).append(layers[0].split())
+	if layers.size() == 2:
+		(template["backroom_tiles"] as Array).append(layers[1].split())
+	if debug_logging: print("template_tiles: ", line)
 
 
 func _parse_empty_line():
@@ -237,7 +242,7 @@ func _parse_empty_line():
 	var template = templates[_current_template_type].back()
 	if not (template["tiles"] as Array).is_empty() and not _template_complete:
 		_template_complete = true
-		if debug_logging: print('template complete')
+		if debug_logging: print("template complete")
 
 
 func _to_int_list(list: Array[String]) -> Array[int]:

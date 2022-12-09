@@ -28,7 +28,7 @@ func set_tile(coords: Vector2i, tile: String, chance_percent: int):
 	if tile == "empty":
 		return
 	if chance_percent != 100 and randi_range(1, 100) > chance_percent:
-		return 
+		return
 	if not tiles.has(tile):
 		print("unknown tile: ", tile)
 		return
