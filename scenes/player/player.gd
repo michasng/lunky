@@ -65,7 +65,7 @@ func drop_rope():
 	var rope = rope_scene.instantiate()
 	get_parent().add_child(rope)
 	rope.position = position + Vector2(view_dir * pixel_per_meter, pixel_per_meter)
-	rope.unroll()
+	rope.call_deferred("unroll")
 
 
 func center_on_tile_horizontally():

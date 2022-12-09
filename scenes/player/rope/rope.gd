@@ -23,8 +23,9 @@ func unroll():
 	var tile: Vector2i = level.local_to_map(position)
 	var tile_center: Vector2 = level.map_to_local(tile)
 	position = tile_center
-	spawn_segment(rope_anchor_scene, Vector2.ZERO)
-	$StaticBody2D/PinJoint2D.node_b = _segments.back().get_path()
+	var anchor = spawn_segment(rope_anchor_scene, Vector2.ZERO)
+	if anchor:
+		$StaticBody2D/PinJoint2D.node_b = anchor.get_path()
 
 
 func _on_segment_unrolled():
