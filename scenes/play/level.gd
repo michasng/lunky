@@ -1,6 +1,8 @@
 extends TileMap
 class_name Level
 
+@export var debug_logging: bool = false
+
 # enum values correspond to atlas IDs
 enum atlas {
 	MISC = 0,
@@ -30,7 +32,7 @@ func set_tile(coords: Vector2i, tile: String, chance_percent: int):
 	if chance_percent != 100 and randi_range(1, 100) > chance_percent:
 		return
 	if not tiles.has(tile):
-		print("unknown tile: ", tile)
+		if debug_logging: print("unknown tile: ", tile)
 		return
 	set_cell(0, coords, tiles[tile][0], tiles[tile][1])
 
