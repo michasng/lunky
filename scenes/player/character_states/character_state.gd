@@ -1,7 +1,7 @@
 extends Node
 class_name CharacterState
 
-@onready var body: CharacterBody2D = $"../.."
+@onready var body: Player = $"../.."
 @onready var anim_tree: AnimationNodeStateMachinePlayback = $"../../AnimationTree".get("parameters/playback")
 
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
@@ -40,8 +40,15 @@ func default_physics(delta: float):
 	# 	print('vel: ', velocity / spelunky2_fps / pixel_per_meter)
 	body.move_and_slide()
 	
+	handle_rope_input()
+
+
+func handle_rope_input():
 	if Input.is_action_just_pressed("rope"):
 		if Input.is_action_pressed("move_down"):
-			body.drop_rope()
+			body.drop_rope(drop_rope_offset())
 		else:
 			body.throw_rope()
+
+func drop_rope_offset() -> Vector2:
+	return Vector2(pixel_per_meter, pixel_per_meter)

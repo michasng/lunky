@@ -60,11 +60,27 @@ func throw_rope():
 	rope_bundle.throw(position - Vector2(0, hit_box.y / 2))
 
 
-func drop_rope():
+func drop_rope(offset: Vector2):
 	var rope = rope_scene.instantiate()
 	get_parent().add_child(rope)
-	rope.position = position + Vector2(view_dir * pixel_per_meter, pixel_per_meter)
-	rope.call_deferred("unroll")
+	var tile = pos_to_tile(get_center())
+	var origin = tile_to_pos(tile, true)
+	rope.position = origin + offset * Vector2(view_dir, 1)
+	rope.unroll()
+
+
+func pos_to_tile(pos: Vector2) -> Vector2:
+	return floor(pos / pixel_per_meter)
+
+
+func tile_to_pos(tile: Vector2, center_pos: bool) -> Vector2:
+	if center_pos:
+		tile += Vector2(.5, .5)
+	return tile * pixel_per_meter
+
+
+func get_center() -> Vector2:
+	return position - Vector2(0, hit_box.y / 2)
 
 
 func center_on_tile_horizontally():

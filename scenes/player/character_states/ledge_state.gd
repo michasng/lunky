@@ -18,12 +18,11 @@ func get_transition() -> CharacterState:
 
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.velocity.y = 0
+	var tile = body.pos_to_tile(body.get_center())
+	if body.view_dir == body.RIGHT: tile.x += 1
+	var ledge_pos = body.tile_to_pos(tile, false)
 	# move the player directly to the ledge
-	var player_center = body.position - body.hit_box / 2
-	var tile = floor(player_center / pixel_per_meter) * pixel_per_meter
-	if body.view_dir == body.RIGHT:
-		tile += Vector2(pixel_per_meter, 0)
-	body.position = tile + Vector2(
+	body.position = ledge_pos + Vector2(
 		-body.view_dir * (body.hit_box.x / 2 - 1), # -1 pixel, to avoid weird edge collisions
 		body.hit_box.y - ledge_offset
 	)
@@ -33,4 +32,7 @@ func exit_state(_next_state: CharacterState, _delta: float):
 	pass
 
 func handle_physics(_delta: float):
-	pass
+	self.handle_rope_input()
+
+func drop_rope_offset() -> Vector2:
+	return Vector2(0, 0)
