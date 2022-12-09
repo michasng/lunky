@@ -45,9 +45,7 @@ func exit_state(_next_state: CharacterState, _delta: float):
 
 func handle_physics(delta: float):
 	default_physics(delta)
-	var input_direction = Input.get_axis("move_left", "move_right")
-	if input_direction:
-		tile_above.target_position = input_direction * tile_above_default_target_pos
-		tile_in_front.target_position = input_direction * tile_in_front_default_target_pos
+	tile_above.target_position = body.view_dir * tile_above_default_target_pos
+	tile_in_front.target_position = body.view_dir * tile_in_front_default_target_pos
 	if Input.is_action_just_pressed("jump"):
 		jump_pressed_frame = frame_count
