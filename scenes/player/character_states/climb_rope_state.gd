@@ -15,7 +15,7 @@ func get_transition() -> CharacterState:
 
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.center_on_tile_horizontally()
-	anim_tree.travel('climb_rope')
+	anim_playback.travel('climb_rope')
 
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass
@@ -25,11 +25,11 @@ func handle_physics(_delta: float):
 	if input_direction:
 		body.velocity = Vector2(0, input_direction * body.max_speed)
 		if input_direction == -1:
-			anim_tree.travel('climb_rope')
+			anim_playback.travel('climb_rope')
 		elif input_direction == 1:
-			anim_tree.travel('climb_rope_down')
+			anim_playback.travel('climb_rope_down')
 	else:
 		body.velocity = Vector2.ZERO
-		anim_tree.travel('climb_rope_pause')
+		anim_playback.travel('climb_rope_pause')
 	
 	body.move_and_slide()

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/play/level_generator.gd" id="2_j045y"]
 [ext_resource type="TileSet" uid="uid://cvh4jkcd04loh" path="res://tilesets/tileset.tres" id="3_mcv3w"]
 [ext_resource type="Script" path="res://scenes/play/level.gd" id="4_6yw7d"]
-[ext_resource type="PackedScene" uid="uid://bv0xelqfkrpxv" path="res://scenes/player/player.tscn" id="4_60k8e"]
+[ext_resource type="PackedScene" uid="uid://8p6ai2xupkvq" path="res://scenes/player/player.tscn" id="4_60k8e"]
 
 [node name="Play" type="Node2D"]
 

@@ -20,6 +20,11 @@ _global_script_classes=[{
 "path": "res://scenes/player/character_states/climb_rope_state.gd"
 }, {
 "base": "CharacterState",
+"class": &"CrouchState",
+"language": &"GDScript",
+"path": "res://scenes/player/character_states/crouch_state.gd"
+}, {
+"base": "CharacterState",
 "class": &"EnterState",
 "language": &"GDScript",
 "path": "res://scenes/player/character_states/enter_state.gd"
@@ -87,6 +92,7 @@ _global_script_classes=[{
 _global_script_class_icons={
 "CharacterState": "",
 "ClimbRopeState": "",
+"CrouchState": "",
 "EnterState": "",
 "ExitState": "",
 "FallState": "",

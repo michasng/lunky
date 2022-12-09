@@ -22,6 +22,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var jump_power: float = 0.18 * pow(spelunky2_fps, 2) * pixel_per_meter
 # @export var gravity: float = 0.01 * pow(spelunky2_fps, 2) * pixel_per_meter
 
+# there may be a way to calculate this from the other values
+@export var crawl_speed: float = 0.029 * spelunky2_fps * pixel_per_meter
+
+@export var debug_logging: bool = false
+
 @onready var current_state: CharacterState = $"States/EnterState"
 @onready var previous_state: CharacterState = current_state
 
@@ -43,6 +48,12 @@ func _physics_process(delta: float):
 
 	current_state.frame_count += 1
 	current_state.handle_physics(delta)
+	
+	if debug_logging and velocity != Vector2.ZERO:
+		print(
+			"vel: " , velocity / spelunky2_fps / pixel_per_meter,
+			" pos: ", position / pixel_per_meter
+		)
 
 
 func set_state(next_state: CharacterState, delta: float):

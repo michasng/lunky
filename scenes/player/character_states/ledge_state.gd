@@ -26,13 +26,13 @@ func enter_state(_previous_state: CharacterState, _delta: float):
 		-body.view_dir * (body.hit_box.x / 2 - 1), # -1 pixel, to avoid weird edge collisions
 		body.hit_box.y - ledge_offset
 	)
-	anim_tree.travel("ledge_grab")
+	anim_playback.travel("ledge_grab")
 
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass
 
 func handle_physics(_delta: float):
-	self.handle_rope_input()
+	handle_rope_input()
 
 func drop_rope_offset() -> Vector2:
 	return Vector2(0, 0)

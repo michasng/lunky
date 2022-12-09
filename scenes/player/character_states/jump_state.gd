@@ -14,7 +14,7 @@ func get_transition() -> CharacterState:
 func enter_state(_previous_state: CharacterState, delta: float):
 	body.velocity.y = min(body.velocity.y, 0) # stop any downward movement first
 	body.velocity.y -= body.jump_power * delta
-	anim_tree.travel("jump_rise")
+	anim_playback.travel("jump_rise")
 
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass

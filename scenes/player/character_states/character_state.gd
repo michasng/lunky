@@ -2,7 +2,8 @@ extends Node
 class_name CharacterState
 
 @onready var body: Player = $"../.."
-@onready var anim_tree: AnimationNodeStateMachinePlayback = $"../../AnimationTree".get("parameters/playback")
+@onready var anim_tree: AnimationTree = $"../../AnimationTree"
+@onready var anim_playback: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
 
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 var frame_count: int = 0
@@ -20,10 +21,8 @@ func handle_physics(_delta: float):
 	pass
 
 func default_physics(delta: float):
-	if not body.is_on_floor():
-		body.velocity.y += body.gravity * delta
-
-	body.velocity.x = move_toward(body.velocity.x, 0, body.friction)
+	apply_gravity(delta)
+	apply_friction()
 
 	var input_direction = Input.get_axis("move_left", "move_right")
 	if input_direction:
@@ -35,13 +34,16 @@ func default_physics(delta: float):
 		)
 		body.handle_turn(sign(input_direction))
 
-	# print(position / pixel_per_meter)
-	# if velocity != Vector2.ZERO:
-	# 	print('vel: ', velocity / spelunky2_fps / pixel_per_meter)
 	body.move_and_slide()
 	
 	handle_rope_input()
 
+func apply_gravity(delta: float):
+	if not body.is_on_floor():
+		body.velocity.y += body.gravity * delta
+
+func apply_friction():
+	body.velocity.x = move_toward(body.velocity.x, 0, body.friction)
 
 func handle_rope_input():
 	if Input.is_action_just_pressed("rope"):

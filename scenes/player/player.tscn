@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bv0xelqfkrpxv"]
+[gd_scene load_steps=56 format=3 uid="uid://8p6ai2xupkvq"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_vqwy6"]
 [ext_resource type="Script" path="res://scenes/player/character_states/enter_state.gd" id="2_nqi4t"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/player/character_states/climb_rope_state.gd" id="8_6f2oo"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="8_wrjuj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cyi82blpusmx6" path="res://sprites/player_animation_tree.tres" id="9_5yi7c"]
+[ext_resource type="Script" path="res://scenes/player/character_states/crouch_state.gd" id="9_abuce"]
 
 [sub_resource type="Animation" id="Animation_g11dn"]
 resource_name = "balance"
@@ -759,6 +760,9 @@ script = ExtResource("7_6lv4w")
 [node name="ClimbRopeState" type="Node" parent="States"]
 script = ExtResource("8_6f2oo")
 
+[node name="CrouchState" type="Node" parent="States"]
+script = ExtResource("9_abuce")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(0, -72)
@@ -778,6 +782,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_4elmf")
 parameters/climb_rope_pause/TimeScale/scale = 0.0
+parameters/crawl/TimeScale/scale = 1.0
 parameters/sneak/TimeScale/scale = 0.75
 
 [node name="Camera2D" type="Camera2D" parent="."]

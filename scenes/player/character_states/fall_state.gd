@@ -31,7 +31,7 @@ func get_transition() -> CharacterState:
 	return self
 
 func enter_state(previous_state: CharacterState, _delta: float):
-	anim_tree.travel("jump_fall")
+	anim_playback.travel("jump_fall")
 	jump_pressed_frame = -1
 	can_coyote_jump = previous_state is StandState or previous_state is LedgeState
 
