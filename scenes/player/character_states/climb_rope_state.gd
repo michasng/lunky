@@ -33,3 +33,9 @@ func handle_physics(_delta: float):
 		anim_playback.travel('climb_rope_pause')
 	
 	body.move_and_slide()
+	
+	handle_rope_input()
+
+func handle_rope_input():
+	if Input.is_action_just_pressed("rope"):
+		body.throw_rope()
