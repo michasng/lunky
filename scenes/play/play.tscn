@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d01st73yii11k"]
+[gd_scene load_steps=7 format=3 uid="uid://d01st73yii11k"]
 
 [ext_resource type="Script" path="res://scenes/play/level_file.gd" id="1_m74yj"]
 [ext_resource type="Script" path="res://scenes/play/level_generator.gd" id="2_j045y"]
 [ext_resource type="TileSet" uid="uid://cvh4jkcd04loh" path="res://tilesets/tileset.tres" id="3_mcv3w"]
 [ext_resource type="Script" path="res://scenes/play/level.gd" id="4_6yw7d"]
 [ext_resource type="PackedScene" uid="uid://8p6ai2xupkvq" path="res://scenes/player/player.tscn" id="4_60k8e"]
+[ext_resource type="PackedScene" uid="uid://c3km10ul4olx" path="res://scenes/enemies/crush_trap.tscn" id="6_l8chw"]
 
 [node name="Play" type="Node2D"]
 
@@ -26,3 +27,6 @@ script = ExtResource("4_6yw7d")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(5614, 3168)
 zoom = Vector2(0.1, 0.1)
+
+[node name="CrushTrap" parent="." instance=ExtResource("6_l8chw")]
+position = Vector2(491, -109)
