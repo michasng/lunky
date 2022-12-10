@@ -32,4 +32,7 @@ func handle_physics(delta: float):
 		else:
 			anim_playback.travel("walk")
 	else:
-		anim_playback.travel("idle")
+		if body.tile_below_back.get_collider() and not body.tile_below_center.get_collider():
+			anim_playback.travel("balance")
+		else:
+			anim_playback.travel("idle")

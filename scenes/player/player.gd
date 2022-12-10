@@ -11,6 +11,9 @@ const rope_scene = preload("rope/rope.tscn")
 @onready var tile_above_default_target_pos: Vector2i = tile_above.target_position
 @onready var tile_in_front: RayCast2D = $"TileInFront"
 @onready var tile_in_front_default_target_pos: Vector2i = tile_in_front.target_position
+@onready var tile_below_center: RayCast2D = $"TileBelowCenter"
+@onready var tile_below_back: RayCast2D = $"TileBelowBack"
+@onready var tile_below_back_default_pos: Vector2i = tile_below_back.position
 
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -107,4 +110,4 @@ func handle_turn(turn_dir: int):
 	sprite.flip_h = turn_dir < 0
 	tile_above.target_position = view_dir * tile_above_default_target_pos
 	tile_in_front.target_position = view_dir * tile_in_front_default_target_pos
-
+	tile_below_back.position = view_dir * tile_below_back_default_pos

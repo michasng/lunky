@@ -802,3 +802,10 @@ target_position = Vector2(50, 0)
 [node name="TileInFront" type="RayCast2D" parent="."]
 position = Vector2(0, -74)
 target_position = Vector2(50, 0)
+
+[node name="TileBelowCenter" type="RayCast2D" parent="."]
+target_position = Vector2(0, 20)
+
+[node name="TileBelowBack" type="RayCast2D" parent="."]
+position = Vector2(-30, 0)
+target_position = Vector2(0, 20)
