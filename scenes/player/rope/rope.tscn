@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/player/rope/rope.gd" id="1_edk3b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_npnns"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0evau"]
 radius = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_urvgx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv45k"]
 size = Vector2(24, 128)
 
 [node name="Rope" type="Node2D"]
@@ -17,7 +17,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CircleShape2D_npnns")
+shape = SubResource("CircleShape2D_0evau")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="StaticBody2D"]
 node_a = NodePath("..")
@@ -28,7 +28,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 1
-shape = SubResource("RectangleShape2D_urvgx")
+shape = SubResource("RectangleShape2D_gv45k")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

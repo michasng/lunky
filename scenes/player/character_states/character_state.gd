@@ -36,7 +36,12 @@ func default_physics(delta: float):
 
 	body.move_and_slide()
 	
+	handle_drop_through_platform_input()
 	handle_rope_input()
+
+func handle_drop_through_platform_input():
+	if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):
+		body.set_collision_mask_value(globals.platform_layer, false)
 
 func apply_gravity(delta: float):
 	if not body.is_on_floor():

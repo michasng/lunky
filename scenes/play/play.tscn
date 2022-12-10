@@ -18,6 +18,7 @@ script = ExtResource("2_j045y")
 tile_set = ExtResource("3_mcv3w")
 cell_quadrant_size = 128
 format = 2
+layer_0/name = "Tiles"
 script = ExtResource("4_6yw7d")
 
 [node name="Player" parent="." instance=ExtResource("4_60k8e")]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/rope/rope_segment.gd" id="1_fwh3x"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="1_j3mgl"]
 
-[sub_resource type="Animation" id="Animation_t0dr3"]
+[sub_resource type="Animation" id="Animation_lcmoa"]
 resource_name = "cap"
 length = 0.1
 step = 0.033
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [Vector2i(5, 12)]
 }
 
-[sub_resource type="Animation" id="Animation_p0uvc"]
+[sub_resource type="Animation" id="Animation_hqjra"]
 resource_name = "hang"
 length = 0.1
 tracks/0/type = "value"
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [Vector2i(0, 12)]
 }
 
-[sub_resource type="Animation" id="Animation_lhjeg"]
+[sub_resource type="Animation" id="Animation_3cfko"]
 resource_name = "unroll"
 length = 0.064
 step = 0.016
@@ -53,18 +53,19 @@ tracks/0/keys = {
 "values": [Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ayuwu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_288u7"]
 _data = {
-"cap": SubResource("Animation_t0dr3"),
-"hang": SubResource("Animation_p0uvc"),
-"unroll": SubResource("Animation_lhjeg")
+"cap": SubResource("Animation_lcmoa"),
+"hang": SubResource("Animation_hqjra"),
+"unroll": SubResource("Animation_3cfko")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_08lsa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhi36"]
 size = Vector2(24, 100)
 
 [node name="RopeSegment" type="RigidBody2D"]
 collision_layer = 0
+collision_mask = 0
 mass = 0.1
 script = ExtResource("1_fwh3x")
 
@@ -76,10 +77,10 @@ frame = 193
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ayuwu")
+"": SubResource("AnimationLibrary_288u7")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_08lsa")
+shape = SubResource("RectangleShape2D_uhi36")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

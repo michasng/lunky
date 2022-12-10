@@ -36,9 +36,11 @@ func enter_state(previous_state: CharacterState, _delta: float):
 	can_coyote_jump = previous_state is StandState or previous_state is LedgeState
 
 func exit_state(_next_state: CharacterState, _delta: float):
-	pass
+	body.set_collision_mask_value(globals.platform_layer, true)
 
 func handle_physics(delta: float):
 	default_physics(delta)
 	if Input.is_action_just_pressed("jump"):
 		jump_pressed_frame = frame_count
+	if Input.is_action_just_released("jump"):
+		body.set_collision_mask_value(globals.platform_layer, true)
