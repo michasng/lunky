@@ -731,7 +731,7 @@ _data = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_4elmf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjwgc"]
-size = Vector2(72, 90)
+size = Vector2(71.68, 89.6)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -789,8 +789,9 @@ parameters/sneak/TimeScale/scale = 0.75
 current = true
 zoom = Vector2(0.5, 0.5)
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -45)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -44.8)
 shape = SubResource("RectangleShape2D_qjwgc")
 
 [node name="TileAbove" type="RayCast2D" parent="."]

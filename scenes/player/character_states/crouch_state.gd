@@ -19,9 +19,15 @@ func get_transition() -> CharacterState:
 func enter_state(previous_state: CharacterState, _delta: float):
 	jump_buffered = previous_state is FallState and previous_state.jump_buffered()
 	anim_playback.travel("crawl")
+	
+	body.collision_shape.shape = RectangleShape2D.new()
+	body.collision_shape.shape.size = body.hit_box_crouch
+	body.collision_shape.position = Vector2(0, - body.hit_box_crouch.y / 2)
 
 func exit_state(_next_state: CharacterState, _delta: float):
-	pass
+	body.collision_shape.shape = RectangleShape2D.new()
+	body.collision_shape.shape.size = body.hit_box
+	body.collision_shape.position = Vector2(0, - body.hit_box.y / 2)
 
 func handle_physics(delta: float):
 	apply_gravity(delta)
