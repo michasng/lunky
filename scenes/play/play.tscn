@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d01st73yii11k"]
+[gd_scene load_steps=8 format=3 uid="uid://d01st73yii11k"]
 
 [ext_resource type="Script" path="res://scenes/play/level_file.gd" id="1_m74yj"]
 [ext_resource type="Script" path="res://scenes/play/level_generator.gd" id="2_j045y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/play/level.gd" id="4_6yw7d"]
 [ext_resource type="PackedScene" uid="uid://8p6ai2xupkvq" path="res://scenes/player/player.tscn" id="4_60k8e"]
 [ext_resource type="PackedScene" uid="uid://c3km10ul4olx" path="res://scenes/enemies/crush_trap.tscn" id="6_l8chw"]
+[ext_resource type="Texture2D" uid="uid://cqnyy4o1g3eog" path="res://textures/bg/bg_cave.png" id="7_yrk72"]
 
 [node name="Play" type="Node2D"]
 
@@ -30,3 +31,37 @@ zoom = Vector2(0.1, 0.1)
 
 [node name="CrushTrap" parent="." instance=ExtResource("6_l8chw")]
 position = Vector2(279, -132)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(512, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("7_yrk72")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1024, 0)
+texture = ExtResource("7_yrk72")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2048, 0)
+texture = ExtResource("7_yrk72")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 1024)
+texture = ExtResource("7_yrk72")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1024, 1024)
+texture = ExtResource("7_yrk72")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2048, 1024)
+texture = ExtResource("7_yrk72")
+centered = false
