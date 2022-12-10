@@ -5,6 +5,7 @@ class_name LedgeState
 
 # how many pixels to hang above ledges
 var ledge_offset: float = 2
+var collider: Object
 
 func get_transition() -> CharacterState:
 	if Input.is_action_just_pressed("jump"):
@@ -18,7 +19,7 @@ func get_transition() -> CharacterState:
 
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.velocity.y = 0
-	var collider = body.tile_in_front.get_collider()
+	collider = body.tile_in_front.get_collider()
 	var ledge_pos: Vector2
 	if collider is CollisionObject2D:
 		var owner_ids = collider.get_shape_owners()
@@ -35,18 +36,19 @@ func enter_state(_previous_state: CharacterState, _delta: float):
 
 	anim_playback.travel("ledge_grab")
 
-
 func move_to_ledge(ledge_pos: Vector2):
 	body.position = ledge_pos + Vector2(
 		-body.view_dir * (body.hit_box.x / 2 - 1), # -1 pixel, to avoid weird edge collisions
 		body.hit_box.y - ledge_offset
 	)
 
-
 func exit_state(_next_state: CharacterState, _delta: float):
 	pass
 
 func handle_physics(_delta: float):
+	if collider is CharacterBody2D:
+		body.velocity = collider.velocity
+		body.move_and_slide()
 	handle_rope_input()
 
 func drop_rope_offset() -> Vector2:

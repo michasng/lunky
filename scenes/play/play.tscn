@@ -29,4 +29,4 @@ position = Vector2(5614, 3168)
 zoom = Vector2(0.1, 0.1)
 
 [node name="CrushTrap" parent="." instance=ExtResource("6_l8chw")]
-position = Vector2(491, -109)
+position = Vector2(279, -132)
