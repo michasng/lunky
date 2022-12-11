@@ -5,7 +5,7 @@ enum DrawMode { DRAW, ERASE }
 var draw_mode: DrawMode
 
 
-func is_tile(coords: Vector2i):
+func is_any_tile(coords: Vector2i):
 	return get_cell_tile_data(0, coords) != null
 
 
@@ -19,7 +19,7 @@ func draw_tile(coords: Vector2i):
 func _process(_delta: float):
 	var tile_coords = local_to_map(get_viewport().get_mouse_position())
 	if Input.is_action_just_pressed("mouse_left"):
-		if is_tile(tile_coords):
+		if is_any_tile(tile_coords):
 			draw_mode = DrawMode.ERASE
 		else:
 			draw_mode = DrawMode.DRAW

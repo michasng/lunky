@@ -21,7 +21,9 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	grid_size = level_file.level_settings["size"]
+	level.map_size = grid_size * room_size
 	generate_level()
+	level.decorate()
 
 
 func generate_level():

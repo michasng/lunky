@@ -7,6 +7,7 @@
 size = Vector2(128, 128)
 
 [node name="CrushTrap" type="CharacterBody2D"]
+z_index = 4
 script = ExtResource("1_px3he")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

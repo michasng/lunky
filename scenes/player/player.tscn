@@ -734,6 +734,7 @@ _data = {
 size = Vector2(71.68, 89.6)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vqwy6")
@@ -765,7 +766,6 @@ script = ExtResource("8_6f2oo")
 script = ExtResource("9_abuce")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(0, -72)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("8_wrjuj")
@@ -791,7 +791,6 @@ current = true
 zoom = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
 position = Vector2(0, -44.8)
 shape = SubResource("RectangleShape2D_qjwgc")
 
