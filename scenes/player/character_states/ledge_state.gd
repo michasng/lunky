@@ -29,9 +29,12 @@ func enter_state(_previous_state: CharacterState, _delta: float):
 		if body.view_dir == body.LEFT:
 			ledge_pos += Vector2(shape.get_rect().size.x, 0)
 	if collider is TileMap:
-		var tile = body.pos_to_tile(body.get_center())
-		if body.view_dir == body.RIGHT: tile.x += 1
-		ledge_pos = body.tile_to_pos(tile, false)
+		var tile: Vector2i = body.level.local_to_map(body.get_center())
+		var tile_center = body.level.map_to_local(tile)
+		ledge_pos = tile_center + Vector2(
+			body.view_dir * pixel_per_meter / 2,
+			-pixel_per_meter / 2
+		)
 	move_to_ledge(ledge_pos)
 
 	anim_playback.travel("ledge_grab")

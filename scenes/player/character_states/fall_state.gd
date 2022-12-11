@@ -16,9 +16,10 @@ func jump_buffered() -> bool:
 		frame_count - jump_pressed_frame <= jump_buffer_frames
 
 func get_transition() -> CharacterState:
-	if not body.rope_contacts.is_empty() and not Input.is_action_pressed("jump") and \
-		(Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")):
+	if has_climb_input() and body.can_climb_rope():
 		return $"../ClimbRopeState"
+	if has_climb_input() and body.can_climb_ladder():
+		return $"../ClimbLadderState"
 	if can_coyote_jump and \
 		frame_count <= coyote_frames and \
 		Input.is_action_just_pressed('jump'):

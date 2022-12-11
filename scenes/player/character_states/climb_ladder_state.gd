@@ -1,5 +1,5 @@
 extends CharacterState
-class_name ClimbRopeState
+class_name ClimbLadderState
 
 
 func get_transition() -> CharacterState:
@@ -9,15 +9,15 @@ func get_transition() -> CharacterState:
 		return $"../JumpState"
 	if body.is_on_floor():
 		return $"../StandState"
-	if not body.can_climb_rope():
-		if has_climb_input() and body.can_climb_ladder():
-			return $"../ClimbLadderState"
+	if not body.can_climb_ladder():
+		if has_climb_input() and body.can_climb_rope():
+			return $"../ClimbRopeState"
 		return $"../FallState"
 	return self
 
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.center_on_tile_horizontally()
-	anim_playback.travel('climb_rope')
+	anim_playback.travel('climb_ladder')
 	body.set_collision_mask_value(globals.platform_layer, false)
 
 func exit_state(_next_state: CharacterState, _delta: float):
@@ -28,12 +28,12 @@ func handle_physics(_delta: float):
 	if input_direction:
 		body.velocity = Vector2(0, input_direction * body.max_speed)
 		if input_direction == -1:
-			anim_playback.travel('climb_rope')
+			anim_tree.set("parameters/climb_ladder/TimeScale/scale", 1)
 		elif input_direction == 1:
-			anim_playback.travel('climb_rope_down')
+			anim_tree.set("parameters/climb_ladder/TimeScale/scale", -1)
 	else:
 		body.velocity = Vector2.ZERO
-		anim_playback.travel('climb_rope_pause')
+		anim_tree.set("parameters/climb_ladder/TimeScale/scale", 0)
 	
 	body.move_and_slide()
 	

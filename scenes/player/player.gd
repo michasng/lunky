@@ -3,6 +3,7 @@ class_name Player
 
 const rope_bundle_scene = preload("rope/rope_bundle.tscn")
 const rope_scene = preload("rope/rope.tscn")
+@onready var level: Level = $"/root/Play/Level"
 @onready var collision_shape: CollisionShape2D = $"CollisionShape2D"
 @onready var hit_box: Vector2 = collision_shape.shape.get_rect().size
 @onready var hit_box_crouch: Vector2 = Vector2(hit_box.x, 64)
@@ -79,20 +80,19 @@ func throw_rope():
 func drop_rope(offset: Vector2):
 	var rope = rope_scene.instantiate()
 	get_parent().add_child(rope)
-	var tile = pos_to_tile(get_center())
-	var origin = tile_to_pos(tile, true)
+	var tile = level.local_to_map(get_center())
+	var origin = level.map_to_local(tile)
 	rope.position = origin + offset * Vector2(view_dir, 1)
 	rope.unroll()
 
 
-func pos_to_tile(pos: Vector2) -> Vector2:
-	return floor(pos / pixel_per_meter)
+func can_climb_ladder() -> bool:
+	var tile = level.local_to_map(get_center())
+	return level.is_ladder(tile)
 
 
-func tile_to_pos(tile: Vector2, center_pos: bool) -> Vector2:
-	if center_pos:
-		tile += Vector2(.5, .5)
-	return tile * pixel_per_meter
+func can_climb_rope() -> bool:
+	return not rope_contacts.is_empty()
 
 
 func get_center() -> Vector2:

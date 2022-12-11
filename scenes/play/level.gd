@@ -17,6 +17,9 @@ enum PhysicsLayers {
 	PLATFORM = 1,
 }
 
+const CustomDataLayer_TYPE = 'type'
+const CustomDataLayer_IS_LADDER = 'is_ladder'
+
 var map_size: Vector2i
 
 # enum values correspond to atlas IDs
@@ -90,6 +93,18 @@ func is_solid_tile(coords: Vector2i):
 func is_tile(tile: String, coords: Vector2i) -> bool:
 	return get_cell_source_id(TileMapLayers.MAIN, coords) == tiles[tile][ATLAS] and \
 		get_cell_atlas_coords(TileMapLayers.MAIN, coords) == tiles[tile][ATLAS_COORDS] 
+
+
+func is_ladder(coords: Vector2i):
+	if not is_any_tile(coords):
+		return false
+	return get_cell_tile_data(TileMapLayers.MAIN, coords).get_custom_data(CustomDataLayer_IS_LADDER)
+
+
+func get_tile(coords: Vector2i):
+	if not is_any_tile(coords):
+		return false
+	return get_cell_tile_data(TileMapLayers.MAIN, coords).get_custom_data(CustomDataLayer_TYPE)
 
 
 func set_tile(coords: Vector2i, tile: String, chance_percent: int):
