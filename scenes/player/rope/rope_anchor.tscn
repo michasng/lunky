@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/rope/rope_segment.gd" id="1_nxoax"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="2_ed7dt"]
 
-[sub_resource type="Animation" id="Animation_5yokj"]
+[sub_resource type="Animation" id="Animation_4365w"]
 resource_name = "burn"
 length = 0.1
 step = 0.01
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [Vector2i(15, 9)]
 }
 
-[sub_resource type="Animation" id="Animation_evk8o"]
+[sub_resource type="Animation" id="Animation_tnq8u"]
 resource_name = "cap"
 length = 0.1
 step = 0.033
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "values": [Vector2i(14, 9)]
 }
 
-[sub_resource type="Animation" id="Animation_7jbsd"]
+[sub_resource type="Animation" id="Animation_0ujaf"]
 resource_name = "hang"
 length = 0.1
 step = 0.016
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "values": [Vector2i(13, 9)]
 }
 
-[sub_resource type="Animation" id="Animation_t3f8g"]
+[sub_resource type="Animation" id="Animation_hukue"]
 resource_name = "unroll"
 length = 0.016
 step = 0.033
@@ -71,16 +71,15 @@ tracks/0/keys = {
 "values": [Vector2i(12, 9)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_265jd"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7ibj"]
 _data = {
-"burn": SubResource("Animation_5yokj"),
-"cap": SubResource("Animation_evk8o"),
-"hang": SubResource("Animation_7jbsd"),
-"unroll": SubResource("Animation_t3f8g")
+"burn": SubResource("Animation_4365w"),
+"cap": SubResource("Animation_tnq8u"),
+"hang": SubResource("Animation_0ujaf"),
+"unroll": SubResource("Animation_hukue")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_25wbk"]
-size = Vector2(24, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gwt0"]
 
 [node name="RopeAnchor" type="RigidBody2D"]
 collision_layer = 0
@@ -95,11 +94,10 @@ frame = 156
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_265jd")
+"": SubResource("AnimationLibrary_o7ibj")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_25wbk")
+shape = SubResource("CircleShape2D_0gwt0")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

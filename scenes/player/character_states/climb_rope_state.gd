@@ -9,8 +9,7 @@ func get_transition() -> CharacterState:
 		return $"../JumpState"
 	if body.is_on_floor():
 		return $"../StandState"
-	if body.rope_contacts.is_empty() or \
-		Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+	if body.rope_contacts.is_empty():
 		return $"../FallState"
 	return self
 

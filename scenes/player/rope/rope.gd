@@ -7,7 +7,7 @@ const rope_anchor_scene = preload("rope_anchor.tscn")
 const rope_segment_scene = preload("rope_segment.tscn")
 var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 
-@export var max_rope_segments = 6
+@export var max_rope_segments = 7
 @export var touch_force = 100
 
 var _width: float
@@ -62,6 +62,8 @@ func _update_collision_shape():
 	collision_shape.shape = RectangleShape2D.new()
 	collision_shape.shape.size = Vector2(_width, height)
 	collision_shape.position = Vector2(0, height / 2 - pixel_per_meter / 2)
+	$BottomStaticBody2D.position = Vector2(0, height)
+	$BottomStaticBody2D/PinJoint2D.node_b = _segments.back().get_path()
 
 
 func _on_body_entered(body: PhysicsBody2D):

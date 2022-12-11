@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player/rope/rope_segment.gd" id="1_fwh3x"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="1_j3mgl"]
 
-[sub_resource type="Animation" id="Animation_lcmoa"]
+[sub_resource type="Animation" id="Animation_1kbxd"]
 resource_name = "cap"
 length = 0.1
 step = 0.033
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [Vector2i(5, 12)]
 }
 
-[sub_resource type="Animation" id="Animation_hqjra"]
+[sub_resource type="Animation" id="Animation_itj4b"]
 resource_name = "hang"
 length = 0.1
 tracks/0/type = "value"
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [Vector2i(0, 12)]
 }
 
-[sub_resource type="Animation" id="Animation_3cfko"]
+[sub_resource type="Animation" id="Animation_ibe3d"]
 resource_name = "unroll"
 length = 0.064
 step = 0.016
@@ -53,20 +53,21 @@ tracks/0/keys = {
 "values": [Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_288u7"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6p5qh"]
 _data = {
-"cap": SubResource("Animation_lcmoa"),
-"hang": SubResource("Animation_hqjra"),
-"unroll": SubResource("Animation_3cfko")
+"cap": SubResource("Animation_1kbxd"),
+"hang": SubResource("Animation_itj4b"),
+"unroll": SubResource("Animation_ibe3d")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhi36"]
-size = Vector2(24, 100)
+[sub_resource type="CircleShape2D" id="CircleShape2D_buekh"]
 
 [node name="RopeSegment" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
 mass = 0.1
+linear_damp = 1.0
+angular_damp = 1.0
 script = ExtResource("1_fwh3x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -77,10 +78,10 @@ frame = 193
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_288u7")
+"": SubResource("AnimationLibrary_6p5qh")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_uhi36")
+shape = SubResource("CircleShape2D_buekh")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
