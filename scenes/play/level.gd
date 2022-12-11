@@ -90,20 +90,26 @@ func is_solid_tile(coords: Vector2i):
 	return tile_data.get_collision_polygons_count(PhysicsLayers.SOLID) > 0
 
 
-func is_tile(tile: String, coords: Vector2i) -> bool:
-	return get_cell_source_id(TileMapLayers.MAIN, coords) == tiles[tile][ATLAS] and \
-		get_cell_atlas_coords(TileMapLayers.MAIN, coords) == tiles[tile][ATLAS_COORDS] 
+func is_platform(coords) -> bool:
+	if not is_any_tile(coords):
+		return false
+	var tile_data = get_cell_tile_data(TileMapLayers.MAIN, coords)
+	return tile_data.get_collision_polygons_count(PhysicsLayers.PLATFORM) > 0
 
 
-func is_ladder(coords: Vector2i):
+func is_ladder(coords: Vector2i) -> bool:
 	if not is_any_tile(coords):
 		return false
 	return get_cell_tile_data(TileMapLayers.MAIN, coords).get_custom_data(CustomDataLayer_IS_LADDER)
 
 
+func is_tile(tile: String, coords: Vector2i) -> bool:
+	return get_tile(coords) == tile
+
+
 func get_tile(coords: Vector2i):
 	if not is_any_tile(coords):
-		return false
+		return null
 	return get_cell_tile_data(TileMapLayers.MAIN, coords).get_custom_data(CustomDataLayer_TYPE)
 
 

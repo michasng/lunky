@@ -95,6 +95,12 @@ func can_climb_rope() -> bool:
 	return not rope_contacts.is_empty()
 
 
+func is_on_platform() -> bool:
+	var tile = level.local_to_map(get_center())
+	var tile_below = tile + Vector2i.DOWN
+	return level.is_platform(tile_below)
+
+
 func get_center() -> Vector2:
 	return position - Vector2(0, hit_box.y / 2)
 

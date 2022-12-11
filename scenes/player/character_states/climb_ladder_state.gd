@@ -18,6 +18,7 @@ func get_transition() -> CharacterState:
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.center_on_tile_horizontally()
 	anim_playback.travel('climb_ladder')
+	anim_tree.set("parameters/climb_ladder/TimeScale/scale", 1)
 	body.set_collision_mask_value(globals.platform_layer, false)
 
 func exit_state(_next_state: CharacterState, _delta: float):
@@ -27,9 +28,9 @@ func handle_physics(_delta: float):
 	var input_direction = Input.get_axis("move_up", "move_down")
 	if input_direction:
 		body.velocity = Vector2(0, input_direction * body.max_speed)
-		if input_direction == -1:
+		if input_direction < 0:
 			anim_tree.set("parameters/climb_ladder/TimeScale/scale", 1)
-		elif input_direction == 1:
+		elif input_direction > 0:
 			anim_tree.set("parameters/climb_ladder/TimeScale/scale", -1)
 	else:
 		body.velocity = Vector2.ZERO

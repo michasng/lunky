@@ -61,7 +61,10 @@ func drop_rope_offset() -> Vector2:
 	return Vector2(pixel_per_meter, pixel_per_meter)
 
 func has_climb_input() -> bool:
-	return (
-		Input.is_action_pressed("move_up") or
-		(not body.is_on_floor() and Input.is_action_pressed("move_down"))
-	)
+	if Input.is_action_pressed("move_up"):
+		return true
+	if Input.is_action_pressed("move_down"):
+		if body.is_on_floor():
+			return body.is_on_platform()
+		return true
+	return false

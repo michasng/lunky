@@ -27,9 +27,9 @@ func handle_physics(_delta: float):
 	var input_direction = Input.get_axis("move_up", "move_down")
 	if input_direction:
 		body.velocity = Vector2(0, input_direction * body.max_speed)
-		if input_direction == -1:
+		if input_direction < 0:
 			anim_playback.travel('climb_rope')
-		elif input_direction == 1:
+		elif input_direction > 0:
 			anim_playback.travel('climb_rope_down')
 	else:
 		body.velocity = Vector2.ZERO
