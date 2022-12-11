@@ -6,9 +6,16 @@ class_name Level
 @onready var h_borders: TileMap = $HBorders
 @onready var v_borders: TileMap = $VBorders
 
-const background_layer = 0
-const tile_layer = 1
-const decoration_layer = 2
+enum TileMapLayers {
+	BACKGROUND = 0,
+	MAIN = 1,
+	DECORATION = 2,
+}
+
+enum PhysicsLayers {
+	SOLID = 0,
+	PLATFORM = 1,
+}
 
 var map_size: Vector2i
 
@@ -70,12 +77,19 @@ const tiles: Dictionary = {
 
 
 func is_any_tile(coords: Vector2i):
-	return get_cell_source_id(tile_layer, coords) != -1
+	return get_cell_source_id(TileMapLayers.MAIN, coords) != -1
+
+
+func is_solid_tile(coords: Vector2i):
+	if not is_any_tile(coords):
+		return false
+	var tile_data = get_cell_tile_data(TileMapLayers.MAIN, coords)
+	return tile_data.get_collision_polygons_count(PhysicsLayers.SOLID) > 0
 
 
 func is_tile(tile: String, coords: Vector2i) -> bool:
-	return get_cell_source_id(tile_layer, coords) == tiles[tile][ATLAS] and \
-		get_cell_atlas_coords(tile_layer, coords) == tiles[tile][ATLAS_COORDS] 
+	return get_cell_source_id(TileMapLayers.MAIN, coords) == tiles[tile][ATLAS] and \
+		get_cell_atlas_coords(TileMapLayers.MAIN, coords) == tiles[tile][ATLAS_COORDS] 
 
 
 func set_tile(coords: Vector2i, tile: String, chance_percent: int):
@@ -86,7 +100,7 @@ func set_tile(coords: Vector2i, tile: String, chance_percent: int):
 	if not tiles.has(tile):
 		if debug_logging: print("unknown tile: ", tile)
 		return
-	set_cell(tile_layer, coords, tiles[tile][ATLAS], tiles[tile][ATLAS_COORDS])
+	set_cell(TileMapLayers.MAIN, coords, tiles[tile][ATLAS], tiles[tile][ATLAS_COORDS])
 
 
 func for_each_tile(bounds: Vector2i, fn):

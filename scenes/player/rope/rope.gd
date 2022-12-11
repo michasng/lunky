@@ -44,14 +44,14 @@ func _on_segment_unrolled():
 
 func spawn_segment(segment_scene, relative_position: Vector2) -> PhysicsBody2D:
 	var tile_coords: Vector2i = level.local_to_map(relative_position + position)
-	if level.is_any_tile(tile_coords):
+	if level.is_solid_tile(tile_coords):
 		return
 	var segment = segment_scene.instantiate()
 	_segments.append(segment)
 	add_child(segment)
 	segment.position = relative_position
 	var next_tile_coords = tile_coords + Vector2i(0, 1)
-	segment.unroll(_segments.size() >= max_rope_segments or level.is_any_tile(next_tile_coords))
+	segment.unroll(_segments.size() >= max_rope_segments or level.is_solid_tile(next_tile_coords))
 	segment.connect("unrolled", _on_segment_unrolled)
 	return segment
 

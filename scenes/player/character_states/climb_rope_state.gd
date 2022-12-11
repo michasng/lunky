@@ -9,16 +9,18 @@ func get_transition() -> CharacterState:
 		return $"../JumpState"
 	if body.is_on_floor():
 		return $"../StandState"
-	if body.rope_contacts.is_empty():
+	if body.rope_contacts.is_empty() or \
+		Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		return $"../FallState"
 	return self
 
 func enter_state(_previous_state: CharacterState, _delta: float):
 	body.center_on_tile_horizontally()
 	anim_playback.travel('climb_rope')
+	body.set_collision_mask_value(globals.platform_layer, false)
 
 func exit_state(_next_state: CharacterState, _delta: float):
-	pass
+	body.set_collision_mask_value(globals.platform_layer, true)
 
 func handle_physics(_delta: float):
 	var input_direction = Input.get_axis("move_up", "move_down")
