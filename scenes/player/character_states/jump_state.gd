@@ -2,13 +2,13 @@ extends CharacterState
 class_name JumpState
 
 func get_transition() -> CharacterState:
-	if has_climb_input() and body.can_climb_rope():
-		return $"../ClimbRopeState"
-	if has_climb_input() and body.can_climb_ladder():
-		return $"../ClimbLadderState"
 	if body.is_on_floor():
 		return $"../StandState"
 	if body.velocity.y > 0:
+		if has_climb_input() and body.can_climb_rope():
+			return $"../ClimbRopeState"
+		if has_climb_input() and body.can_climb_ladder():
+			return $"../ClimbLadderState"
 		return $"../FallState"
 	return self
 
