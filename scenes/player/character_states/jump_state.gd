@@ -5,10 +5,11 @@ func get_transition() -> CharacterState:
 	if body.is_on_floor():
 		return $"../StandState"
 	if body.velocity.y > 0:
-		if has_climb_input() and body.can_climb_rope():
-			return $"../ClimbRopeState"
-		if has_climb_input() and body.can_climb_ladder():
-			return $"../ClimbLadderState"
+		if has_climb_input():
+			if body.can_climb_rope():
+				return $"../ClimbRopeState"
+			if body.can_climb_ladder():
+				return $"../ClimbLadderState"
 		return $"../FallState"
 	return self
 

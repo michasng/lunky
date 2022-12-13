@@ -4,10 +4,11 @@ class_name CrouchState
 var jump_buffered: bool = false
 
 func get_transition() -> CharacterState:
-	if has_climb_input() and body.can_climb_rope():
-		return $"../ClimbRopeState"
-	if has_climb_input() and body.can_climb_ladder():
-		return $"../ClimbLadderState"
+	if has_climb_input():
+		if body.can_climb_rope():
+			return $"../ClimbRopeState"
+		if body.can_climb_ladder():
+			return $"../ClimbLadderState"
 	if (Input.is_action_just_pressed('jump') or jump_buffered) \
 		and not Input.is_action_pressed("move_down"):
 		return $"../JumpState"
