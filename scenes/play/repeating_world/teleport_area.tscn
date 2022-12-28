@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cehcq8ndpkke4"]
+
+[ext_resource type="Script" path="res://scenes/play/repeating_world/teleport_area.gd" id="1_01waw"]
+
+[node name="TeleportArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_01waw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

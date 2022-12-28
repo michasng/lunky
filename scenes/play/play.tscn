@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d01st73yii11k"]
+[gd_scene load_steps=9 format=3 uid="uid://dn6ectttoxh5q"]
 
 [ext_resource type="Script" path="res://scenes/play/level_file.gd" id="1_m74yj"]
 [ext_resource type="Script" path="res://scenes/play/level_generator.gd" id="2_j045y"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8p6ai2xupkvq" path="res://scenes/player/player.tscn" id="4_60k8e"]
 [ext_resource type="PackedScene" uid="uid://c3km10ul4olx" path="res://scenes/enemies/crush_trap.tscn" id="6_l8chw"]
 [ext_resource type="Texture2D" uid="uid://cqnyy4o1g3eog" path="res://textures/bg/bg_cave.png" id="7_yrk72"]
+[ext_resource type="PackedScene" uid="uid://cbeeogt8skb3b" path="res://scenes/play/repeating_world/repeating_world.tscn" id="10_vwn74"]
 
 [node name="Play" type="Node2D"]
 
@@ -51,7 +52,8 @@ script = ExtResource("1_m74yj")
 [node name="LevelGenerator" type="Node2D" parent="."]
 script = ExtResource("2_j045y")
 
-[node name="Player" parent="." instance=ExtResource("4_60k8e")]
+[node name="Player" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_60k8e")]
+level = NodePath("../Level")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(5614, 3168)
@@ -93,3 +95,6 @@ centered = false
 position = Vector2(2048, 1024)
 texture = ExtResource("7_yrk72")
 centered = false
+
+[node name="RepeatingWorld" parent="." instance=ExtResource("10_vwn74")]
+portal_size_meter = Vector2(9, 5)

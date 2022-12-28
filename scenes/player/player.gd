@@ -3,7 +3,7 @@ class_name Player
 
 const rope_bundle_scene = preload("rope/rope_bundle.tscn")
 const rope_scene = preload("rope/rope.tscn")
-@onready var level: Level = $"/root/Play/Level"
+@export var level: Level
 @onready var collision_shape: CollisionShape2D = $"CollisionShape2D"
 @onready var hit_box: Vector2 = collision_shape.shape.get_rect().size
 @onready var hit_box_crouch: Vector2 = Vector2(hit_box.x, 64)
