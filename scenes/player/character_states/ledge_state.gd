@@ -51,7 +51,7 @@ func exit_state(_next_state: CharacterState, _delta: float):
 func handle_physics(_delta: float):
 	if collider is CharacterBody2D:
 		body.velocity = collider.velocity
-		body.move_and_slide()
+		body.apply_velocity()
 	handle_rope_input()
 
 func drop_rope_offset() -> Vector2:

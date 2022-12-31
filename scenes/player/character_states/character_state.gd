@@ -34,10 +34,11 @@ func default_physics(delta: float):
 		)
 		body.handle_turn(sign(input_direction))
 
-	body.move_and_slide()
+	body.apply_velocity()
 	
 	handle_drop_through_platform_input()
 	handle_rope_input()
+
 
 func handle_drop_through_platform_input():
 	if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):

@@ -40,7 +40,7 @@ func handle_physics(delta: float):
 		body.velocity.x = input_direction * body.crawl_speed
 		body.handle_turn(sign(input_direction))
 
-	body.move_and_slide()
+	body.apply_velocity()
 	
 	handle_drop_through_platform_input()
 	handle_rope_input()

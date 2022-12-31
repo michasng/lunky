@@ -35,7 +35,7 @@ func handle_physics(_delta: float):
 		body.velocity = Vector2.ZERO
 		anim_playback.travel('climb_rope_pause')
 	
-	body.move_and_slide()
+	body.apply_velocity()
 	
 	handle_rope_input()
 

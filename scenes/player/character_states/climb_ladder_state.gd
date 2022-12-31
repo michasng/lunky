@@ -36,7 +36,7 @@ func handle_physics(_delta: float):
 		body.velocity = Vector2.ZERO
 		anim_tree.set("parameters/climb_ladder/TimeScale/scale", 0)
 	
-	body.move_and_slide()
+	body.apply_velocity()
 	
 	handle_rope_input()
 

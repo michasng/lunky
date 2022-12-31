@@ -21,7 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # values taken from the real game
 @export var spelunky2_fps = 60 # number of physics calculations per second, actually
-@export var friction: float = 0.015 * spelunky2_fps * pixel_per_meter
+@export var friction: float = 0.015 * globals.physics_fps * pixel_per_meter
 @export var acceleration: float = 0.032 * pow(spelunky2_fps, 2) * pixel_per_meter
 @export var max_speed: float = 0.0725 * spelunky2_fps * pixel_per_meter
 @export var sprint_factor: float = 2
@@ -60,6 +60,14 @@ func _physics_process(delta: float):
 			"vel: " , velocity / spelunky2_fps / pixel_per_meter,
 			" pos: ", position / pixel_per_meter
 		)
+
+
+func apply_velocity():
+	velocity = Vector2(
+		clampf(velocity.x, -globals.linear_speed_limit, globals.linear_speed_limit),
+		clampf(velocity.y, -globals.linear_speed_limit, globals.linear_speed_limit)
+	)
+	move_and_slide()
 
 
 func set_state(next_state: CharacterState, delta: float):
