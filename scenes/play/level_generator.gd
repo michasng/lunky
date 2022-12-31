@@ -3,7 +3,6 @@ class_name LevelGenerator
 
 @onready var level: Level = $"../Level"
 @onready var level_file: LevelFile = $"../LevelFile"
-var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 
 @export var debug_labels: bool = false
 @export var debug_logging: bool = false
@@ -109,7 +108,7 @@ func _spawn_label_at_tile(text: String, tile_coords: Vector2i):
 	if debug_labels:
 		var label = Label.new()
 		label.text = text
-		label.position = tile_coords * pixel_per_meter
+		label.position = tile_coords * globals.tile_size
 		label.label_settings = LabelSettings.new()
 		label.label_settings.font_size = 48
 		label.z_index = 1 # show in front of the level

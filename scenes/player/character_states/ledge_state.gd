@@ -32,8 +32,8 @@ func enter_state(_previous_state: CharacterState, _delta: float):
 		var tile: Vector2i = body.level.local_to_map(body.get_center())
 		var tile_center = body.level.map_to_local(tile)
 		ledge_pos = tile_center + Vector2(
-			body.view_dir * pixel_per_meter / 2,
-			-pixel_per_meter / 2
+			body.view_dir * globals.tile_size / 2,
+			-globals.tile_size / 2
 		)
 	move_to_ledge(ledge_pos)
 

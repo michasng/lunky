@@ -16,20 +16,16 @@ const rope_scene = preload("rope/rope.tscn")
 @onready var tile_below_back: RayCast2D = $"TileBelowBack"
 @onready var tile_below_back_default_pos: Vector2i = tile_below_back.position
 
-var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 # values taken from the real game
-@export var spelunky2_fps = 60 # number of physics calculations per second, actually
-@export var friction: float = 0.015 * globals.physics_fps * pixel_per_meter
-@export var acceleration: float = 0.032 * pow(spelunky2_fps, 2) * pixel_per_meter
-@export var max_speed: float = 0.0725 * spelunky2_fps * pixel_per_meter
+@export var friction: float = 0.015 * globals.tile_size * globals.physics_fps
+@export var acceleration: float = 0.032 * globals.tile_size * pow(globals.physics_fps, 2)
+@export var max_speed: float = 0.0725 * globals.tile_size * globals.physics_fps
 @export var sprint_factor: float = 2
-@export var jump_power: float = 0.18 * pow(spelunky2_fps, 2) * pixel_per_meter
-# @export var gravity: float = 0.01 * pow(spelunky2_fps, 2) * pixel_per_meter
+@export var jump_power: float = 0.18 * globals.tile_size * pow(globals.physics_fps, 2)
+# @export var gravity: float = 0.01 * globals.tile_size * pow(globals.physics_fps, 2)
 
 # there may be a way to calculate this from the other values
-@export var crawl_speed: float = 0.029 * spelunky2_fps * pixel_per_meter
+@export var crawl_speed: float = 0.029 * globals.tile_size * globals.physics_fps
 
 @export var debug_logging: bool = false
 
@@ -57,8 +53,8 @@ func _physics_process(delta: float):
 	
 	if debug_logging and velocity != Vector2.ZERO:
 		print(
-			"vel: " , velocity / spelunky2_fps / pixel_per_meter,
-			" pos: ", position / pixel_per_meter
+			"vel: " , velocity / globals.physics_fps / globals.tile_size,
+			" pos: ", position / globals.tile_size
 		)
 
 
@@ -114,7 +110,7 @@ func get_center() -> Vector2:
 
 
 func center_on_tile_horizontally():
-	position.x = floor(position.x / pixel_per_meter) * pixel_per_meter + pixel_per_meter / 2
+	position.x = floor(position.x / globals.tile_size) * globals.tile_size + globals.tile_size / 2
 
 
 func handle_turn(turn_dir: int):

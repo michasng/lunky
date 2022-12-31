@@ -7,10 +7,12 @@ const player_layer: int = 2
 const platform_layer: int = 3
 const ladder_layer: int = 4
 
-const tile_size = 128
-const physics_fps = 60
+const tile_size: int = 128
+const physics_fps: int = 60
 
-const linear_speed_limit: float = 0.4 * physics_fps * tile_size
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+const linear_speed_limit: float = 0.4 * tile_size * physics_fps
 
 
 

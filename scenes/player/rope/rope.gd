@@ -5,7 +5,6 @@ class_name Rope
 @onready var collision_shape: CollisionShape2D = $"Area2D/CollisionShape2D"
 const rope_anchor_scene = preload("rope_anchor.tscn")
 const rope_segment_scene = preload("rope_segment.tscn")
-var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
 
 @export var max_rope_segments = 7
 @export var touch_force = 100
@@ -32,12 +31,12 @@ func _on_segment_unrolled():
 	_update_collision_shape()
 	if _segments.size() < max_rope_segments:
 		var previous_segment = _segments.back()
-		var segment = spawn_segment(rope_segment_scene, Vector2(0, _segments.size() * pixel_per_meter))
+		var segment = spawn_segment(rope_segment_scene, Vector2(0, _segments.size() * globals.tile_size))
 		if segment:
 			var pin_joint = PinJoint2D.new()
 			# add joint to the bottom of the previous segment
 			previous_segment.add_child(pin_joint)
-			pin_joint.position = Vector2(0, pixel_per_meter / 2)
+			pin_joint.position = Vector2(0, globals.tile_size / 2)
 			pin_joint.node_a = previous_segment.get_path()
 			pin_joint.node_b = segment.get_path()
 
@@ -57,11 +56,11 @@ func spawn_segment(segment_scene, relative_position: Vector2) -> PhysicsBody2D:
 
 
 func _update_collision_shape():
-	var height = _segments.size() * pixel_per_meter
+	var height = _segments.size() * globals.tile_size
 	# create a new shape, so ropes are independent of each other
 	collision_shape.shape = RectangleShape2D.new()
 	collision_shape.shape.size = Vector2(_width, height)
-	collision_shape.position = Vector2(0, height / 2 - pixel_per_meter / 2)
+	collision_shape.position = Vector2(0, height / 2 - globals.tile_size / 2)
 	$BottomStaticBody2D.position = Vector2(0, height)
 	$BottomStaticBody2D/PinJoint2D.node_b = _segments.back().get_path()
 

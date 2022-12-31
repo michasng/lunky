@@ -5,11 +5,10 @@ class_name RepeatingWorld
 @export var padding_meter: Vector2 = Vector2(2, 2)
 @export var portal_size_meter: Vector2 = Vector2(5, 5)
 
-@onready var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
-@onready var bounds = bounds_meter * pixel_per_meter
-@onready var padding = padding_meter * pixel_per_meter
+@onready var bounds = bounds_meter * globals.tile_size
+@onready var padding = padding_meter * globals.tile_size
 @onready var total_size = bounds + 2 * padding
-@onready var portal_size = portal_size_meter * pixel_per_meter
+@onready var portal_size = portal_size_meter * globals.tile_size
 
 @onready var left_to_right_teleport: TeleportArea = $"Teleports/LeftToRight"
 @onready var right_to_left_teleport: TeleportArea = $"Teleports/RightToLeft"

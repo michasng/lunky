@@ -4,10 +4,8 @@ class_name RopeBundle
 @onready var level: Level = $"/root/Play/Level"
 const rope_scene = preload("rope.tscn")
 
-var pixel_per_meter = ProjectSettings.get_setting("global/pixel_per_meter")
-
-@export var speed: float = 0.3 * 60 * pixel_per_meter
-@export var throw_distance: float = 6 * pixel_per_meter
+@export var speed: float = 0.3 * 60 * globals.tile_size
+@export var throw_distance: float = 6 * globals.tile_size
 
 var starting_position: Vector2
 
