@@ -57,3 +57,6 @@ func handle_physics(delta: float):
 		jump_pressed_frame = frame_count
 	if Input.is_action_just_released("jump"):
 		body.set_collision_mask_value(globals.platform_layer, true)
+	if body.velocity.y == globals.linear_speed_limit:
+		anim_playback.travel("long_fall")
+
