@@ -11,6 +11,7 @@ class_name FallState
 var can_coyote_jump: bool
 var jump_pressed_frame: int
 
+var was_previously_hanging_on_ledge: bool
 var was_previously_climbing: bool
 var drop_key_released: bool
 
@@ -31,7 +32,7 @@ func get_transition() -> CharacterState:
 		return $"../JumpState"
 	if body.is_on_floor():
 		return $"../StandState"
-	if (not body.previous_state is LedgeState or frame_count > ledge_cooloff_frames) and \
+	if (not was_previously_hanging_on_ledge or frame_count > ledge_cooloff_frames) and \
 		not body.tile_above.get_collider() and body.tile_in_front.get_collider():
 		return $"../LedgeState"
 	return self
@@ -41,6 +42,7 @@ func enter_state(previous_state: CharacterState, _delta: float):
 		previous_state is ClimbRopeState or \
 		previous_state is ClimbLadderState
 	)
+	was_previously_hanging_on_ledge = previous_state is LedgeState
 	drop_key_released = false
 	anim_playback.travel("jump_fall")
 	jump_pressed_frame = -1

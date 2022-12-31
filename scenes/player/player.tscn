@@ -1,6 +1,7 @@
-[gd_scene load_steps=57 format=3 uid="uid://8p6ai2xupkvq"]
+[gd_scene load_steps=58 format=3 uid="uid://8p6ai2xupkvq"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_vqwy6"]
+[ext_resource type="Script" path="res://scenes/player/state_machine.gd" id="2_8h5h8"]
 [ext_resource type="Script" path="res://scenes/player/character_states/enter_state.gd" id="2_nqi4t"]
 [ext_resource type="Script" path="res://scenes/player/character_states/stand_state.gd" id="3_45ri4"]
 [ext_resource type="Script" path="res://scenes/player/character_states/jump_state.gd" id="4_i62o8"]
@@ -740,33 +741,34 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vqwy6")
 
-[node name="States" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_8h5h8")
 
-[node name="EnterState" type="Node" parent="States"]
+[node name="EnterState" type="Node" parent="StateMachine"]
 script = ExtResource("2_nqi4t")
 
-[node name="StandState" type="Node" parent="States"]
+[node name="StandState" type="Node" parent="StateMachine"]
 script = ExtResource("3_45ri4")
 
-[node name="CrouchState" type="Node" parent="States"]
+[node name="CrouchState" type="Node" parent="StateMachine"]
 script = ExtResource("9_abuce")
 
-[node name="JumpState" type="Node" parent="States"]
+[node name="JumpState" type="Node" parent="StateMachine"]
 script = ExtResource("4_i62o8")
 
-[node name="FallState" type="Node" parent="States"]
+[node name="FallState" type="Node" parent="StateMachine"]
 script = ExtResource("5_kk6qe")
 
-[node name="LedgeState" type="Node" parent="States"]
+[node name="LedgeState" type="Node" parent="StateMachine"]
 script = ExtResource("6_qbih3")
 
-[node name="ExitState" type="Node" parent="States"]
+[node name="ExitState" type="Node" parent="StateMachine"]
 script = ExtResource("7_6lv4w")
 
-[node name="ClimbRopeState" type="Node" parent="States"]
+[node name="ClimbRopeState" type="Node" parent="StateMachine"]
 script = ExtResource("8_6f2oo")
 
-[node name="ClimbLadderState" type="Node" parent="States"]
+[node name="ClimbLadderState" type="Node" parent="StateMachine"]
 script = ExtResource("10_gojre")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

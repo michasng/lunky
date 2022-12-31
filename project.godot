@@ -104,6 +104,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/player/character_states/stand_state.gd"
 }, {
+"base": "Node",
+"class": &"StateMachine",
+"language": &"GDScript",
+"path": "res://scenes/player/state_machine.gd"
+}, {
 "base": "Area2D",
 "class": &"TeleportArea",
 "language": &"GDScript",
@@ -134,6 +139,7 @@ _global_script_class_icons={
 "RopeBundle": "",
 "RopeSegment": "",
 "StandState": "",
+"StateMachine": "",
 "TeleportArea": "",
 "WorldProjection": ""
 }

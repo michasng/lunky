@@ -4,6 +4,7 @@ class_name Player
 const rope_bundle_scene = preload("rope/rope_bundle.tscn")
 const rope_scene = preload("rope/rope.tscn")
 @export var level: Level
+@onready var state_machine: StateMachine = $"StateMachine"
 @onready var collision_shape: CollisionShape2D = $"CollisionShape2D"
 @onready var hit_box: Vector2 = collision_shape.shape.get_rect().size
 @onready var hit_box_crouch: Vector2 = Vector2(hit_box.x, 64)
@@ -29,28 +30,13 @@ const rope_scene = preload("rope/rope.tscn")
 
 @export var debug_logging: bool = false
 
-@onready var current_state: CharacterState = $"States/EnterState"
-@onready var previous_state: CharacterState = current_state
-
 const LEFT = -1
 const RIGHT = 1
 var view_dir: int = 0
 var rope_contacts: Array = []
 
 
-func _ready():
-	current_state.enter_state(previous_state, 0)
-
-
-func _physics_process(delta: float):
-	# first transition then physics for responsiveness
-	var next_state = current_state.get_transition()
-	if next_state != current_state:
-		set_state(next_state, delta)
-
-	current_state.frame_count += 1
-	current_state.handle_physics(delta)
-	
+func _physics_process(_delta: float):
 	if debug_logging and velocity != Vector2.ZERO:
 		print(
 			"vel: " , velocity / globals.physics_fps / globals.tile_size,
@@ -64,15 +50,6 @@ func apply_velocity():
 		clampf(velocity.y, -globals.linear_speed_limit, globals.linear_speed_limit)
 	)
 	move_and_slide()
-
-
-func set_state(next_state: CharacterState, delta: float):
-	# print(state_names[next_state])
-	previous_state = current_state
-	current_state = next_state
-	previous_state.exit_state(current_state, delta)
-	current_state.enter_state(previous_state, delta)
-	current_state.frame_count = 0
 
 
 func throw_rope():
