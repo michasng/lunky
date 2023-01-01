@@ -1,7 +1,7 @@
-extends CharacterState
+extends MovementState
 class_name JumpState
 
-func get_transition() -> CharacterState:
+func get_transition() -> BaseState:
 	if body.is_on_floor():
 		return $"../StandState"
 	if body.velocity.y > 0:
@@ -13,12 +13,12 @@ func get_transition() -> CharacterState:
 		return $"../FallState"
 	return self
 
-func enter_state(_previous_state: CharacterState, delta: float):
+func enter_state(_previous_state: BaseState, delta: float):
 	body.velocity.y = min(body.velocity.y, 0) # stop any downward movement first
 	body.velocity.y -= body.jump_power * delta
 	anim_playback.travel("jump_rise")
 
-func exit_state(_next_state: CharacterState, _delta: float):
+func exit_state(_next_state: BaseState, _delta: float):
 	pass
 
 func handle_physics(delta: float):

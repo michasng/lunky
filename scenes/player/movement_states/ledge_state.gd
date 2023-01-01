@@ -1,4 +1,4 @@
-extends CharacterState
+extends MovementState
 class_name LedgeState
 
 @onready var tile_in_front: RayCast2D = $"../../TileInFront"
@@ -7,7 +7,7 @@ class_name LedgeState
 var ledge_offset: float = 2
 var collider: Object
 
-func get_transition() -> CharacterState:
+func get_transition() -> BaseState:
 	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("move_down"):
 			return $"../FallState"
@@ -17,7 +17,7 @@ func get_transition() -> CharacterState:
 			return $"../FallState"
 	return self
 
-func enter_state(_previous_state: CharacterState, _delta: float):
+func enter_state(_previous_state: BaseState, _delta: float):
 	body.velocity.y = 0
 	collider = body.tile_in_front.get_collider()
 	var ledge_pos: Vector2
@@ -45,7 +45,7 @@ func move_to_ledge(ledge_pos: Vector2):
 		body.hit_box.y - ledge_offset
 	)
 
-func exit_state(_next_state: CharacterState, _delta: float):
+func exit_state(_next_state: BaseState, _delta: float):
 	pass
 
 func handle_physics(_delta: float):

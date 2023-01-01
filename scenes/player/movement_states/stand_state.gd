@@ -1,9 +1,9 @@
-extends CharacterState
+extends MovementState
 class_name StandState
 
 var jump_buffered: bool = false
 
-func get_transition() -> CharacterState:
+func get_transition() -> BaseState:
 	if has_climb_input():
 		if body.can_climb_rope():
 			return $"../ClimbRopeState"
@@ -18,10 +18,10 @@ func get_transition() -> CharacterState:
 		return $"../CrouchState"
 	return self
 
-func enter_state(previous_state: CharacterState, _delta: float):
+func enter_state(previous_state: BaseState, _delta: float):
 	jump_buffered = previous_state is FallState and previous_state.jump_buffered() 
 
-func exit_state(_next_state: CharacterState, _delta: float):
+func exit_state(_next_state: BaseState, _delta: float):
 	pass
 
 func handle_physics(delta: float):

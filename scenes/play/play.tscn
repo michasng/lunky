@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/play/level_generator.gd" id="2_j045y"]
 [ext_resource type="TileSet" uid="uid://cvh4jkcd04loh" path="res://tilesets/tileset.tres" id="3_mcv3w"]
 [ext_resource type="Script" path="res://scenes/play/level.gd" id="4_6yw7d"]
-[ext_resource type="PackedScene" uid="uid://8p6ai2xupkvq" path="res://scenes/player/player.tscn" id="4_60k8e"]
+[ext_resource type="PackedScene" uid="uid://dbs5nbvla3wx" path="res://scenes/player/player.tscn" id="4_60k8e"]
 [ext_resource type="PackedScene" uid="uid://c3km10ul4olx" path="res://scenes/enemies/crush_trap.tscn" id="6_l8chw"]
 [ext_resource type="Texture2D" uid="uid://cqnyy4o1g3eog" path="res://textures/bg/bg_cave.png" id="7_yrk72"]
 [ext_resource type="PackedScene" uid="uid://cbeeogt8skb3b" path="res://scenes/play/repeating_world/repeating_world.tscn" id="10_vwn74"]

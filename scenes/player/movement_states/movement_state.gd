@@ -1,23 +1,10 @@
-extends Node
-class_name CharacterState
+extends BaseState
+class_name MovementState
 
 @onready var body: Player = $"../.."
 @onready var anim_tree: AnimationTree = $"../../AnimationTree"
 @onready var anim_playback: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
 
-var frame_count: int = 0
-
-func get_transition() -> CharacterState:
-	return self
-
-func enter_state(_previous_state: CharacterState, _delta: float):
-	pass
-
-func exit_state(_next_state: CharacterState, _delta: float):
-	pass
-
-func handle_physics(_delta: float):
-	pass
 
 func default_physics(delta: float):
 	apply_gravity(delta)

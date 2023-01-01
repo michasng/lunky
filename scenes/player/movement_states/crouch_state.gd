@@ -1,9 +1,9 @@
-extends CharacterState
+extends MovementState
 class_name CrouchState
 
 var jump_buffered: bool = false
 
-func get_transition() -> CharacterState:
+func get_transition() -> BaseState:
 	if has_climb_input():
 		if body.can_climb_rope():
 			return $"../ClimbRopeState"
@@ -18,7 +18,7 @@ func get_transition() -> CharacterState:
 		return $"../StandState"
 	return self
 
-func enter_state(previous_state: CharacterState, _delta: float):
+func enter_state(previous_state: BaseState, _delta: float):
 	jump_buffered = previous_state is FallState and previous_state.jump_buffered()
 	anim_playback.travel("crawl")
 	
@@ -26,7 +26,7 @@ func enter_state(previous_state: CharacterState, _delta: float):
 	body.collision_shape.shape.size = body.hit_box_crouch
 	body.collision_shape.position = Vector2(0, - body.hit_box_crouch.y / 2)
 
-func exit_state(_next_state: CharacterState, _delta: float):
+func exit_state(_next_state: BaseState, _delta: float):
 	body.collision_shape.shape = RectangleShape2D.new()
 	body.collision_shape.shape.size = body.hit_box
 	body.collision_shape.position = Vector2(0, - body.hit_box.y / 2)

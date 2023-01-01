@@ -4,11 +4,13 @@ class_name Player
 const rope_bundle_scene = preload("rope/rope_bundle.tscn")
 const rope_scene = preload("rope/rope.tscn")
 @export var level: Level
-@onready var state_machine: StateMachine = $"StateMachine"
+@onready var movement_state_machine: StateMachine = $"MovementStateMachine"
+@onready var attack_state_machine: StateMachine = $"AttackStateMachine"
 @onready var collision_shape: CollisionShape2D = $"CollisionShape2D"
 @onready var hit_box: Vector2 = collision_shape.shape.get_rect().size
 @onready var hit_box_crouch: Vector2 = Vector2(hit_box.x, 64)
 @onready var sprite: Sprite2D = $"Sprite2D"
+@onready var anim_playback: AnimationNodeStateMachinePlayback = $"AnimationTree".get("parameters/playback")
 @onready var tile_above: RayCast2D = $"TileAbove"
 @onready var tile_above_default_target_pos: Vector2i = tile_above.target_position
 @onready var tile_in_front: RayCast2D = $"TileInFront"
@@ -34,6 +36,11 @@ const LEFT = -1
 const RIGHT = 1
 var view_dir: int = 0
 var rope_contacts: Array = []
+
+
+func _ready():
+	movement_state_machine.set_state(movement_state_machine.get_node("EnterState"))
+	attack_state_machine.set_state(attack_state_machine.get_node("IdleAttackState"))
 
 
 func _physics_process(_delta: float):

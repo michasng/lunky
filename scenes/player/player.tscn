@@ -1,18 +1,20 @@
-[gd_scene load_steps=58 format=3 uid="uid://8p6ai2xupkvq"]
+[gd_scene load_steps=60 format=3 uid="uid://dbs5nbvla3wx"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_vqwy6"]
-[ext_resource type="Script" path="res://scenes/player/state_machine.gd" id="2_8h5h8"]
-[ext_resource type="Script" path="res://scenes/player/character_states/enter_state.gd" id="2_nqi4t"]
-[ext_resource type="Script" path="res://scenes/player/character_states/stand_state.gd" id="3_45ri4"]
-[ext_resource type="Script" path="res://scenes/player/character_states/jump_state.gd" id="4_i62o8"]
-[ext_resource type="Script" path="res://scenes/player/character_states/fall_state.gd" id="5_kk6qe"]
-[ext_resource type="Script" path="res://scenes/player/character_states/ledge_state.gd" id="6_qbih3"]
-[ext_resource type="Script" path="res://scenes/player/character_states/exit_state.gd" id="7_6lv4w"]
-[ext_resource type="Script" path="res://scenes/player/character_states/climb_rope_state.gd" id="8_6f2oo"]
+[ext_resource type="Script" path="res://scenes/state_machine/state_machine.gd" id="2_upkhr"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/enter_state.gd" id="3_kuvt2"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/stand_state.gd" id="4_ywgfr"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/crouch_state.gd" id="5_whu57"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/jump_state.gd" id="6_jrbo3"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/fall_state.gd" id="7_3vu46"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/ledge_state.gd" id="8_ueajh"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cyi82blpusmx6" path="res://sprites/player_animation_tree.tres" id="9_5yi7c"]
-[ext_resource type="Script" path="res://scenes/player/character_states/crouch_state.gd" id="9_abuce"]
-[ext_resource type="Script" path="res://scenes/player/character_states/climb_ladder_state.gd" id="10_gojre"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/exit_state.gd" id="9_x0hus"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/climb_rope_state.gd" id="10_40gs4"]
+[ext_resource type="Script" path="res://scenes/player/movement_states/climb_ladder_state.gd" id="11_edg0h"]
 [ext_resource type="Texture2D" uid="uid://dsko0l4wpbgat" path="res://textures/chars/char_yellow.png" id="11_jg7n1"]
+[ext_resource type="Script" path="res://scenes/player/attack_states/IdleAttackState.gd" id="12_vxcck"]
+[ext_resource type="Script" path="res://scenes/player/attack_states/WhipAttackState.gd" id="13_sbyaq"]
 
 [sub_resource type="Animation" id="Animation_g11dn"]
 resource_name = "balance"
@@ -671,7 +673,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_gvpy4"]
 resource_name = "whip"
 length = 0.333
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -741,35 +742,44 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vqwy6")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("2_8h5h8")
+[node name="MovementStateMachine" type="Node" parent="."]
+script = ExtResource("2_upkhr")
 
-[node name="EnterState" type="Node" parent="StateMachine"]
-script = ExtResource("2_nqi4t")
+[node name="EnterState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("3_kuvt2")
 
-[node name="StandState" type="Node" parent="StateMachine"]
-script = ExtResource("3_45ri4")
+[node name="StandState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("4_ywgfr")
 
-[node name="CrouchState" type="Node" parent="StateMachine"]
-script = ExtResource("9_abuce")
+[node name="CrouchState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("5_whu57")
 
-[node name="JumpState" type="Node" parent="StateMachine"]
-script = ExtResource("4_i62o8")
+[node name="JumpState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_jrbo3")
 
-[node name="FallState" type="Node" parent="StateMachine"]
-script = ExtResource("5_kk6qe")
+[node name="FallState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_3vu46")
 
-[node name="LedgeState" type="Node" parent="StateMachine"]
-script = ExtResource("6_qbih3")
+[node name="LedgeState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("8_ueajh")
 
-[node name="ExitState" type="Node" parent="StateMachine"]
-script = ExtResource("7_6lv4w")
+[node name="ExitState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("9_x0hus")
 
-[node name="ClimbRopeState" type="Node" parent="StateMachine"]
-script = ExtResource("8_6f2oo")
+[node name="ClimbRopeState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("10_40gs4")
 
-[node name="ClimbLadderState" type="Node" parent="StateMachine"]
-script = ExtResource("10_gojre")
+[node name="ClimbLadderState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("11_edg0h")
+
+[node name="AttackStateMachine" type="Node" parent="."]
+script = ExtResource("2_upkhr")
+
+[node name="IdleAttackState" type="Node" parent="AttackStateMachine"]
+script = ExtResource("12_vxcck")
+
+[node name="WhipAttackState" type="Node" parent="AttackStateMachine"]
+script = ExtResource("13_sbyaq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -72)

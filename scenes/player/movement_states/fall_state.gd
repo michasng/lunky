@@ -1,4 +1,4 @@
-extends CharacterState
+extends MovementState
 class_name FallState
 
 # avoid getting stuck on a ledge and being unable to drop
@@ -19,7 +19,7 @@ func jump_buffered() -> bool:
 	return jump_pressed_frame != -1 and \
 		frame_count - jump_pressed_frame <= jump_buffer_frames
 
-func get_transition() -> CharacterState:
+func get_transition() -> BaseState:
 	var can_climb_again = not was_previously_climbing or drop_key_released
 	if can_climb_again and has_climb_input():
 		if body.can_climb_rope():
@@ -37,7 +37,7 @@ func get_transition() -> CharacterState:
 		return $"../LedgeState"
 	return self
 
-func enter_state(previous_state: CharacterState, _delta: float):
+func enter_state(previous_state: BaseState, _delta: float):
 	was_previously_climbing = (
 		previous_state is ClimbRopeState or \
 		previous_state is ClimbLadderState
@@ -48,7 +48,7 @@ func enter_state(previous_state: CharacterState, _delta: float):
 	jump_pressed_frame = -1
 	can_coyote_jump = previous_state is StandState or previous_state is LedgeState
 
-func exit_state(_next_state: CharacterState, _delta: float):
+func exit_state(_next_state: BaseState, _delta: float):
 	body.set_collision_mask_value(globals.platform_layer, true)
 
 func handle_physics(delta: float):
