@@ -5,7 +5,7 @@ func get_transition() -> BaseState:
 	return self
 
 func enter_state(_previous_state: BaseState, _delta: float):
-	anim_playback.travel('exit')
+	anim_handler.travel('exit')
 
 func exit_state(_next_state: BaseState, _delta: float):
 	pass

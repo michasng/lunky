@@ -17,7 +17,7 @@ func get_transition() -> BaseState:
 
 func enter_state(_previous_state: BaseState, _delta: float):
 	body.center_on_tile_horizontally()
-	anim_playback.travel('climb_ladder')
+	anim_handler.travel('climb_ladder')
 	anim_tree.set("parameters/climb_ladder/TimeScale/scale", 1)
 	body.set_collision_mask_value(globals.platform_layer, false)
 

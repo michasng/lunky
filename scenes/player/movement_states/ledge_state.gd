@@ -37,7 +37,7 @@ func enter_state(_previous_state: BaseState, _delta: float):
 		)
 	move_to_ledge(ledge_pos)
 
-	anim_playback.travel("ledge_grab")
+	anim_handler.travel("ledge_grab")
 
 func move_to_ledge(ledge_pos: Vector2):
 	body.position = ledge_pos + Vector2(

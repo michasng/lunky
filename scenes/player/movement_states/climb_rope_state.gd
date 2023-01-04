@@ -17,7 +17,7 @@ func get_transition() -> BaseState:
 
 func enter_state(_previous_state: BaseState, _delta: float):
 	body.center_on_tile_horizontally()
-	anim_playback.travel('climb_rope')
+	anim_handler.travel('climb_rope')
 	body.set_collision_mask_value(globals.platform_layer, false)
 
 func exit_state(_next_state: BaseState, _delta: float):
@@ -28,12 +28,12 @@ func handle_physics(_delta: float):
 	if input_direction:
 		body.velocity = Vector2(0, input_direction * body.max_speed)
 		if input_direction < 0:
-			anim_playback.travel('climb_rope')
+			anim_handler.travel('climb_rope')
 		elif input_direction > 0:
-			anim_playback.travel('climb_rope_down')
+			anim_handler.travel('climb_rope_down')
 	else:
 		body.velocity = Vector2.ZERO
-		anim_playback.travel('climb_rope_pause')
+		anim_handler.travel('climb_rope_pause')
 	
 	body.apply_velocity()
 	

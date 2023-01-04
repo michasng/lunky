@@ -10,7 +10,6 @@ const rope_scene = preload("rope/rope.tscn")
 @onready var hit_box: Vector2 = collision_shape.shape.get_rect().size
 @onready var hit_box_crouch: Vector2 = Vector2(hit_box.x, 64)
 @onready var sprite: Sprite2D = $"Sprite2D"
-@onready var anim_playback: AnimationNodeStateMachinePlayback = $"AnimationTree".get("parameters/playback")
 @onready var tile_above: RayCast2D = $"TileAbove"
 @onready var tile_above_default_target_pos: Vector2i = tile_above.target_position
 @onready var tile_in_front: RayCast2D = $"TileInFront"

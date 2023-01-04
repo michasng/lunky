@@ -3,7 +3,7 @@ class_name MovementState
 
 @onready var body: Player = $"../.."
 @onready var anim_tree: AnimationTree = $"../../AnimationTree"
-@onready var anim_playback: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
+@onready var anim_handler: AnimationHandler = $"../../AnimationHandler"
 
 
 func default_physics(delta: float):

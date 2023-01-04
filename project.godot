@@ -10,6 +10,11 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Node",
+"class": &"AnimationHandler",
+"language": &"GDScript",
+"path": "res://scenes/animation/animation_handler.gd"
+}, {
+"base": "Node",
 "class": &"BaseState",
 "language": &"GDScript",
 "path": "res://scenes/state_machine/base_state.gd"
@@ -135,6 +140,7 @@ _global_script_classes=[{
 "path": "res://scenes/play/repeating_world/world_projection.gd"
 }]
 _global_script_class_icons={
+"AnimationHandler": "",
 "BaseState": "",
 "ClimbLadderState": "",
 "ClimbRopeState": "",

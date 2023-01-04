@@ -44,7 +44,7 @@ func enter_state(previous_state: BaseState, _delta: float):
 	)
 	was_previously_hanging_on_ledge = previous_state is LedgeState
 	drop_key_released = false
-	anim_playback.travel("jump_fall")
+	anim_handler.travel("jump_fall")
 	jump_pressed_frame = -1
 	can_coyote_jump = previous_state is StandState or previous_state is LedgeState
 
@@ -60,5 +60,5 @@ func handle_physics(delta: float):
 	if Input.is_action_just_released("jump"):
 		body.set_collision_mask_value(globals.platform_layer, true)
 	if body.velocity.y == globals.linear_speed_limit:
-		anim_playback.travel("long_fall")
+		anim_handler.travel("long_fall")
 

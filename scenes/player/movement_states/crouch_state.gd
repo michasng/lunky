@@ -20,7 +20,7 @@ func get_transition() -> BaseState:
 
 func enter_state(previous_state: BaseState, _delta: float):
 	jump_buffered = previous_state is FallState and previous_state.jump_buffered()
-	anim_playback.travel("crawl")
+	anim_handler.travel("crawl")
 	
 	body.collision_shape.shape = RectangleShape2D.new()
 	body.collision_shape.shape.size = body.hit_box_crouch

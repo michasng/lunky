@@ -29,11 +29,11 @@ func handle_physics(delta: float):
 	var input_direction = Input.get_axis("move_left", "move_right")
 	if input_direction:
 		if Input.is_action_pressed("sneak"):
-			anim_playback.travel("sneak")
+			anim_handler.travel("sneak")
 		else:
-			anim_playback.travel("walk")
+			anim_handler.travel("walk")
 	else:
 		if body.tile_below_back.get_collider() and not body.tile_below_center.get_collider():
-			anim_playback.travel("balance")
+			anim_handler.travel("balance")
 		else:
-			anim_playback.travel("idle")
+			anim_handler.travel("idle")
