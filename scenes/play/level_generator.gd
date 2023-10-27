@@ -75,7 +75,6 @@ func _random_room_direction() -> Vector2i:
 			return Vector2i.LEFT
 		2:
 			return Vector2i.RIGHT
-	@warning_ignore(assert_always_false)
 	assert(false, "unreachable code")
 	return Vector2i.ZERO
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cdkshrbxx45cn"]
+[gd_scene load_steps=60 format=3 uid="uid://cdkshrbxx45cn"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_vqwy6"]
 [ext_resource type="Script" path="res://scenes/state_machine/state_machine.gd" id="2_upkhr"]
@@ -732,8 +732,6 @@ _data = {
 "whip": SubResource("Animation_gvpy4")
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_4elmf"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjwgc"]
 size = Vector2(71.68, 89.6)
 
@@ -798,7 +796,6 @@ libraries = {
 tree_root = ExtResource("9_5yi7c")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_4elmf")
 parameters/climb_ladder/TimeScale/scale = 1.0
 parameters/climb_rope_pause/TimeScale/scale = 0.0
 parameters/crawl/TimeScale/scale = 1.0
@@ -809,7 +806,6 @@ script = ExtResource("16_4e666")
 anim_tree = NodePath("../AnimationTree")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
 zoom = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
