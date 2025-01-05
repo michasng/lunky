@@ -14,7 +14,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_h4kd6")
 nodes/Animation/position = Vector2(-60, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fongo")
 nodes/TimeScale/position = Vector2(120, 140)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aa8ey"]
 animation = &"climb_rope"
@@ -34,7 +34,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_wm7ka")
 nodes/Animation/position = Vector2(-120, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_qh5el")
 nodes/TimeScale/position = Vector2(120, 140)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktwgn"]
 animation = &"crawl"
@@ -48,7 +48,7 @@ nodes/Animation/position = Vector2(-20, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_24r1y")
 nodes/TimeScale/position = Vector2(160, 140)
 nodes/output/position = Vector2(320, 160)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kn53i"]
 animation = &"crouch"
@@ -119,7 +119,7 @@ nodes/Animation/position = Vector2(420, 80)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_u3a1q")
 nodes/TimeScale/position = Vector2(580, 60)
 nodes/output/position = Vector2(760, 60)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8jbb4"]
 animation = &"spike_death"

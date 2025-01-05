@@ -13,37 +13,25 @@
 
 [node name="Level" type="TileMap" parent="."]
 tile_set = ExtResource("3_mcv3w")
-cell_quadrant_size = 128
+rendering_quadrant_size = 128
 format = 2
 layer_0/name = "Background"
 layer_1/name = "Tiles"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
 layer_2/name = "Decoration"
-layer_2/enabled = true
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
 script = ExtResource("4_6yw7d")
 
 [node name="VBorders" type="TileMap" parent="Level"]
 z_index = 1
 position = Vector2(0, -64)
 tile_set = ExtResource("3_mcv3w")
-cell_quadrant_size = 128
+rendering_quadrant_size = 128
 format = 2
 
 [node name="HBorders" type="TileMap" parent="Level"]
 z_index = 1
 position = Vector2(-64, 0)
 tile_set = ExtResource("3_mcv3w")
-cell_quadrant_size = 128
+rendering_quadrant_size = 128
 format = 2
 
 [node name="LevelFile" type="Node2D" parent="."]

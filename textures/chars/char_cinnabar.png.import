@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/char_cinnabar.png-90161e452d1c6bb86a6f8ea8c54
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

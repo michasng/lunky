@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/floor_ice.png-ad3a34b86c30c6db1208f74438c6ea0
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
