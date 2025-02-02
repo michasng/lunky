@@ -11,28 +11,25 @@
 
 [node name="Play" type="Node2D"]
 
-[node name="Level" type="TileMap" parent="."]
-tile_set = ExtResource("3_mcv3w")
-rendering_quadrant_size = 128
-format = 2
-layer_0/name = "Background"
-layer_1/name = "Tiles"
-layer_2/name = "Decoration"
+[node name="Level" type="Node" parent="."]
 script = ExtResource("4_6yw7d")
 
-[node name="VBorders" type="TileMap" parent="Level"]
-z_index = 1
+[node name="VerticalBorderLayer" type="TileMapLayer" parent="Level"]
 position = Vector2(0, -64)
 tile_set = ExtResource("3_mcv3w")
-rendering_quadrant_size = 128
-format = 2
 
-[node name="HBorders" type="TileMap" parent="Level"]
-z_index = 1
+[node name="HorizontalBorderLayer" type="TileMapLayer" parent="Level"]
 position = Vector2(-64, 0)
 tile_set = ExtResource("3_mcv3w")
-rendering_quadrant_size = 128
-format = 2
+
+[node name="DecorationLayer" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_mcv3w")
+
+[node name="MainLayer" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_mcv3w")
+
+[node name="BackgroundLayer" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_mcv3w")
 
 [node name="LevelFile" type="Node2D" parent="."]
 script = ExtResource("1_m74yj")

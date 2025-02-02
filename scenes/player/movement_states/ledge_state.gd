@@ -28,7 +28,7 @@ func enter_state(_previous_state: BaseState, _delta: float):
 		ledge_pos = collider.position + shape.get_rect().position
 		if body.view_dir == body.LEFT:
 			ledge_pos += Vector2(shape.get_rect().size.x, 0)
-	if collider is TileMap:
+	if collider is TileMapLayer:
 		var tile: Vector2i = body.level.local_to_map(body.get_center())
 		var tile_center = body.level.map_to_local(tile)
 		ledge_pos = tile_center + Vector2(

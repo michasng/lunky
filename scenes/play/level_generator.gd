@@ -117,8 +117,8 @@ func _spawn_label_at_tile(text: String, tile_coords: Vector2i):
 func _place_template_type(template_type: String, croner_tile_coords: Vector2i):
 	var templates_of_type = level_file.templates[template_type]
 	templates_of_type = templates_of_type.filter(
-		func(template):
-			return not (template['settings'] as Array).has("ignore")
+		func(t):
+			return not (t['settings'] as Array).has("ignore")
 	)
 	var template = templates_of_type.pick_random()
 	_place_template(template, croner_tile_coords)

@@ -795,7 +795,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = ExtResource("9_5yi7c")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/climb_ladder/TimeScale/scale = 1.0
 parameters/climb_rope_pause/TimeScale/scale = 0.0
 parameters/crawl/TimeScale/scale = 1.0

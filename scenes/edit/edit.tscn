@@ -12,7 +12,7 @@ region = Rect2(0, 0, 128, 128)
 
 [node name="LevelEdit" type="TileMap" parent="."]
 tile_set = ExtResource("1_uwgcw")
-cell_quadrant_size = 128
+rendering_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 196616, 1, 0, 131080, 1, 0, 65544, 1, 0, 8, 1, 0, 7, 1, 0, 6, 1, 0, 5, 1, 0, 4, 1, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, 196610, 589825, 11)
 script = ExtResource("2_b56ax")
@@ -26,43 +26,33 @@ offset_right = 515.0
 offset_bottom = -239.0
 
 [node name="GridContainer" type="GridContainer" parent="Camera2D/VBoxContainer"]
-offset_right = 104.0
-offset_bottom = 32.0
+layout_mode = 2
 columns = 3
 
 [node name="TextureButton" type="TextureButton" parent="Camera2D/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 2
 texture_normal = SubResource("AtlasTexture_w1n44")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TextureButton2" type="TextureButton" parent="Camera2D/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
-offset_left = 36.0
-offset_right = 68.0
-offset_bottom = 32.0
+layout_mode = 2
 texture_normal = SubResource("AtlasTexture_w1n44")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TextureButton3" type="TextureButton" parent="Camera2D/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
-offset_left = 72.0
-offset_right = 104.0
-offset_bottom = 32.0
+layout_mode = 2
 texture_normal = SubResource("AtlasTexture_w1n44")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="HSeparator" type="HSeparator" parent="Camera2D/VBoxContainer"]
-offset_top = 36.0
-offset_right = 104.0
-offset_bottom = 40.0
+layout_mode = 2
 
 [node name="Button" type="Button" parent="Camera2D/VBoxContainer"]
-offset_top = 44.0
-offset_right = 104.0
-offset_bottom = 75.0
+layout_mode = 2
 text = "Play"

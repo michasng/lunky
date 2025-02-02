@@ -13,6 +13,3 @@ const physics_fps: int = 60
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const linear_speed_limit: float = 0.4 * tile_size * physics_fps
-
-
-

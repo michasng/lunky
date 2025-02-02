@@ -1,16 +1,14 @@
-extends TileMap
+extends Node
 class_name Level
 
 @export var debug_logging: bool = false
 
-@onready var h_borders: TileMap = $HBorders
-@onready var v_borders: TileMap = $VBorders
+@onready var vertical_border_layer: TileMapLayer = $VerticalBorderLayer
+@onready var horizontal_border_layer: TileMapLayer = $HorizontalBorderLayer
+@onready var decoration_layer: TileMapLayer = $DecorationLayer
+@onready var main_layer: TileMapLayer = $MainLayer
+@onready var background_layer: TileMapLayer = $BackgroundLayer
 
-enum TileMapLayers {
-	BACKGROUND = 0,
-	MAIN = 1,
-	DECORATION = 2,
-}
 
 enum PhysicsLayers {
 	SOLID = 0,
@@ -79,28 +77,36 @@ const tiles: Dictionary = {
 }
 
 
+func local_to_map(local_position: Vector2) -> Vector2i:
+	return main_layer.local_to_map(local_position)
+
+
+func map_to_local(map_position: Vector2i) -> Vector2:
+	return main_layer.map_to_local(map_position)
+
+
 func is_any_tile(coords: Vector2i):
-	return get_cell_source_id(TileMapLayers.MAIN, coords) != -1
+	return main_layer.get_cell_source_id(coords) != -1
 
 
 func is_solid_tile(coords: Vector2i):
 	if not is_any_tile(coords):
 		return false
-	var tile_data = get_cell_tile_data(TileMapLayers.MAIN, coords)
+	var tile_data = main_layer.get_cell_tile_data(coords)
 	return tile_data.get_collision_polygons_count(PhysicsLayers.SOLID) > 0
 
 
 func is_platform(coords) -> bool:
 	if not is_any_tile(coords):
 		return false
-	var tile_data = get_cell_tile_data(TileMapLayers.MAIN, coords)
+	var tile_data = main_layer.get_cell_tile_data(coords)
 	return tile_data.get_collision_polygons_count(PhysicsLayers.PLATFORM) > 0
 
 
 func is_ladder(coords: Vector2i) -> bool:
 	if not is_any_tile(coords):
 		return false
-	return get_cell_tile_data(TileMapLayers.MAIN, coords).get_custom_data(CustomDataLayer_IS_LADDER)
+	return main_layer.get_cell_tile_data(coords).get_custom_data(CustomDataLayer_IS_LADDER)
 
 
 func is_tile(tile: String, coords: Vector2i) -> bool:
@@ -110,7 +116,7 @@ func is_tile(tile: String, coords: Vector2i) -> bool:
 func get_tile(coords: Vector2i):
 	if not is_any_tile(coords):
 		return null
-	return get_cell_tile_data(TileMapLayers.MAIN, coords).get_custom_data(CustomDataLayer_TYPE)
+	return main_layer.get_cell_tile_data(coords).get_custom_data(CustomDataLayer_TYPE)
 
 
 func set_tile(coords: Vector2i, tile: String, chance_percent: int):
@@ -121,7 +127,7 @@ func set_tile(coords: Vector2i, tile: String, chance_percent: int):
 	if not tiles.has(tile):
 		if debug_logging: print("unknown tile: ", tile)
 		return
-	set_cell(TileMapLayers.MAIN, coords, tiles[tile][ATLAS], tiles[tile][ATLAS_COORDS])
+	main_layer.set_cell(coords, tiles[tile][ATLAS], tiles[tile][ATLAS_COORDS])
 
 
 func for_each_tile(bounds: Vector2i, fn):
@@ -135,23 +141,23 @@ func update_tile_borders(coords: Vector2i):
 		var borders = tiles["floor"][BORDERS]
 		var has_top_border = not is_tile("floor", coords + Vector2i.UP)
 		if has_top_border:
-			v_borders.set_cell(0, coords, Atlas.DWELLING, borders[BORDERS_TOP].pick_random())
+			vertical_border_layer.set_cell(coords, Atlas.DWELLING, borders[BORDERS_TOP].pick_random())
 		if not is_tile("floor", coords + Vector2i.DOWN):
-			v_borders.set_cell(0, coords + Vector2i.DOWN, Atlas.DWELLING, borders[BORDERS_BOTTOM].pick_random())
+			vertical_border_layer.set_cell(coords + Vector2i.DOWN, Atlas.DWELLING, borders[BORDERS_BOTTOM].pick_random())
 		if not is_tile("floor", coords + Vector2i.LEFT):
 			var left_border
 			if has_top_border:
 				left_border = borders[BORDERS_SIDE_TOP].pick_random()
 			else:
 				left_border = borders[BORDERS_SIDE].pick_random()
-			h_borders.set_cell(0, coords, Atlas.DWELLING, left_border, 1)
+			horizontal_border_layer.set_cell(coords, Atlas.DWELLING, left_border, 1)
 		if not is_tile("floor", coords + Vector2i.RIGHT):
 			var right_border
 			if has_top_border:
 				right_border = borders[BORDERS_SIDE_TOP].pick_random()
 			else:
 				right_border = borders[BORDERS_SIDE].pick_random()
-			h_borders.set_cell(0, coords + Vector2i.RIGHT, Atlas.DWELLING, right_border)
+			horizontal_border_layer.set_cell(coords + Vector2i.RIGHT, Atlas.DWELLING, right_border)
 
 
 func update_all_tile_borders():

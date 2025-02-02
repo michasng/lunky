@@ -27,4 +27,3 @@ func set_state(next_state: BaseState, delta: float = 0.0):
 	if current_state:
 		current_state.enter_state(previous_state, delta)
 	current_state.frame_count = 0
-

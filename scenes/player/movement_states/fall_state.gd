@@ -61,4 +61,3 @@ func handle_physics(delta: float):
 		body.set_collision_mask_value(globals.platform_layer, true)
 	if body.velocity.y == globals.linear_speed_limit:
 		anim_handler.travel("long_fall")
-
